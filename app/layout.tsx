@@ -19,6 +19,8 @@ export const metadata: Metadata = {
 
 import Header from "@/components/Header";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Footer from "@/components/Footer";
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -27,11 +29,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <Script
+          id="adsense-init"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4160276489030508"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
         {children}
+        <Footer />
         <WhatsAppButton />
       </body>
     </html>
