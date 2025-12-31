@@ -2,7 +2,7 @@
 import os
 import random
 from datetime import datetime
-import google.generativeai as genai
+from google import genai
 
 # --- CONFIGURAÇÃO DA SUA EMPRESA ---
 CONFIG = {
@@ -18,13 +18,6 @@ CONFIG = {
 
 # Configura a chave da API (será pega dos Segredos do GitHub)
 GENAI_API_KEY = os.environ.get("GEMINI_API_KEY")
-if not GENAI_API_KEY:
-    # Fallback/Aviso se rodar local sem env
-    print("Aviso: GEMINI_API_KEY não encontrada no ambiente.")
-    # raise ValueError("A chave GEMINI_API_KEY não foi encontrada!")
-
-if GENAI_API_KEY:
-    genai.configure(api_key=GENAI_API_KEY)
 
 # Lista de temas para variar o conteúdo
 TEMAS = [
@@ -40,6 +33,7 @@ TEMAS = [
 
 def gerar_artigo():
     if not GENAI_API_KEY:
+        print("Aviso: GEMINI_API_KEY não encontrada no ambiente.")
         return "Erro: Chave de API não configurada.", "Erro"
 
     tema_escolhido = random.choice(TEMAS)
@@ -67,10 +61,16 @@ def gerar_artigo():
     Retorne apenas o conteúdo em Markdown.
     """
 
-    model = genai.GenerativeModel('gemini-1.5-flash')
-    response = model.generate_content(prompt)
-    
-    return response.text, tema_escolhido
+    try:
+        client = genai.Client(api_key=GENAI_API_KEY)
+        response = client.models.generate_content(
+            model='gemini-1.5-flash',
+            contents=prompt
+        )
+        return response.text, tema_escolhido
+    except Exception as e:
+        print(f"Erro ao gerar conteúdo: {e}")
+        return str(e), "Erro"
 
 def salvar_arquivo(conteudo, titulo):
     # Cria slug amigável para URL (ex: cuidados-pele-verao)
