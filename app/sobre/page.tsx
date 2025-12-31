@@ -8,11 +8,14 @@ export default function Sobre() {
                 <h1 className="text-4xl font-serif font-bold text-center mb-8">Sobre Andrezza Mota</h1>
 
                 <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-                    <div className="w-full md:w-1/3 relative aspect-square rounded-2xl overflow-hidden shadow-lg bg-gray-200">
-                        {/* Placeholder for user provided image */}
-                        <div className="w-full h-full flex items-center justify-center text-gray-400">
-                            [Foto Andrezza]
-                        </div>
+                    <div className="w-full md:w-1/3 relative aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-white transform transition-transform hover:scale-105">
+                        <Image
+                            src="/foto-andrezza.jpg"
+                            alt="Andrezza Mota"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
                     </div>
 
                     <div className="flex-1 space-y-4 text-lg leading-relaxed text-gray-700">
