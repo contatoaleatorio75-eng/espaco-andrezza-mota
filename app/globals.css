@@ -10,6 +10,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  --color-am-black: #1a1a1a;
+  --color-am-green: #a7f3d0;
+  --color-am-blue: #bae6fd;
+  --color-am-gradient-start: #d1fae5;
+  --color-am-gradient-end: #e0f2fe;
 }
 
 @media (prefers-color-scheme: dark) {

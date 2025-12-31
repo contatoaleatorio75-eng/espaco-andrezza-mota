@@ -1,65 +1,39 @@
-import Image from "next/image";
+
+import ProductCard from "@/components/ProductCard";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-am-gradient-start to-white py-20 text-center px-4">
+        <h2 className="text-3xl md:text-5xl font-serif font-bold text-am-black mb-6">
+          Bem-vinda ao seu momento de beleza
+        </h2>
+        <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+          Descubra as melhores dicas e produtos das marcas que você ama.
+          Consultoria especializada <strong>Natura, O Boticário, Eudora, O.U.I</strong> e muito mais.
+        </p>
+      </section>
+
+      {/* Vitrine Grid */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="flex items-center justify-center mb-12">
+          <div className="h-px bg-gray-300 w-16"></div>
+          <h3 className="mx-4 text-xl md:text-2xl font-bold text-am-black uppercase tracking-widest text-center">
+            Destaques da Semana
+          </h3>
+          <div className="h-px bg-gray-300 w-16"></div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <ProductCard brandRaw="natura" productName="Hidratante Tododia Noz Pecã e Cacau - 400ml" />
+          <ProductCard brandRaw="boticario" productName="Malbec Gold Desodorante Colônia 100ml" />
+          <ProductCard brandRaw="eudora" productName="Siàge Nutri Rosé Shampoo + Condicionador" />
+          <ProductCard brandRaw="oui" productName="L’Amour-Esse 142 Eau de Parfum" />
+          <ProductCard brandRaw="avon" productName="Renew Reversalist Creme Diurno FPS 25" />
+          <ProductCard brandRaw="tupperware" productName="Eco Tupper Garrafa 500ml" />
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
