@@ -25,7 +25,7 @@ jobs:
 
       - name: Instalar dependências da IA
         run: |
-          pip install google-generativeai
+          pip install google-genai
 
       - name: Rodar o Gerador de Conteúdo
         env:
