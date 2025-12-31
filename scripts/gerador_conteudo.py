@@ -65,12 +65,18 @@ def gerar_artigo():
     try:
         client = genai.Client(api_key=GENAI_API_KEY)
         response = client.models.generate_content(
-            model='gemini-1.5-flash',
+            model='gemini-1.5-flash-002',
             contents=prompt
         )
         return response.text, tema_escolhido
     except Exception as e:
         print(f"Erro ao gerar conteúdo: {e}")
+        try:
+             print("Listando modelos disponíveis para debug:")
+             for m in client.models.list():
+                 print(f" - {m.name}")
+        except Exception as e2:
+             print(f"Erro ao listar modelos: {e2}")
         return str(e), "Erro"
 
 def salvar_arquivo(conteudo, titulo):
