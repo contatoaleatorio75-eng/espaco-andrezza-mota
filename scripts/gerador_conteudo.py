@@ -67,7 +67,7 @@ def gerar_artigo():
     Retorne apenas o conteúdo em Markdown.
     """
 
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(prompt)
     
     return response.text, tema_escolhido
