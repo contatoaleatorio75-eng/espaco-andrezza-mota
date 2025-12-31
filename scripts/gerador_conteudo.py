@@ -1,6 +1,7 @@
 
 import os
 import sys
+import time
 import random
 from datetime import datetime
 from google import genai
@@ -62,22 +63,34 @@ def gerar_artigo():
     Retorne apenas o conteúdo em Markdown.
     """
 
-    try:
-        client = genai.Client(api_key=GENAI_API_KEY)
-        response = client.models.generate_content(
-            model='gemini-2.0-flash',
-            contents=prompt
-        )
-        return response.text, tema_escolhido
-    except Exception as e:
-        print(f"Erro ao gerar conteúdo: {e}")
+    # Tenta gerar com retentativa em caso de erro de cota (429)
+    for tentativa in range(3):
         try:
-             print("Listando modelos disponíveis para debug:")
-             for m in client.models.list():
-                 print(f" - {m.name}")
-        except Exception as e2:
-             print(f"Erro ao listar modelos: {e2}")
-        return str(e), "Erro"
+            client = genai.Client(api_key=GENAI_API_KEY)
+            response = client.models.generate_content(
+                model='gemini-2.0-flash',
+                contents=prompt
+            )
+            return response.text, tema_escolhido
+        except Exception as e:
+            msg_erro = str(e)
+            if "429" in msg_erro or "RESOURCE_EXHAUSTED" in msg_erro:
+                print(f"⚠️ Cota excedida (Tentativa {tentativa+1}/3). Aguardando 30 segundos...")
+                time.sleep(30)
+                continue
+            else:
+                print(f"Erro ao gerar conteúdo: {e}")
+                # Se não for erro de cota, tenta listar modelos para debug apenas na última tentativa
+                if tentativa == 2:
+                    try:
+                        print("Listando modelos disponíveis para debug:")
+                        for m in client.models.list():
+                            print(f" - {m.name}")
+                    except:
+                        pass
+                return str(e), "Erro"
+    
+    return "Erro: Falha após 3 tentativas.", "Erro"
 
 def salvar_arquivo(conteudo, titulo):
     # Cria slug amigável para URL (ex: cuidados-pele-verao)
