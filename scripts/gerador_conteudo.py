@@ -65,7 +65,7 @@ def gerar_artigo():
     try:
         client = genai.Client(api_key=GENAI_API_KEY)
         response = client.models.generate_content(
-            model='gemini-1.5-flash-002',
+            model='gemini-2.0-flash',
             contents=prompt
         )
         return response.text, tema_escolhido
