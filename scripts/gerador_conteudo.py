@@ -1,5 +1,6 @@
 
 import os
+import sys
 import random
 from datetime import datetime
 from google import genai
@@ -107,4 +108,5 @@ if __name__ == "__main__":
     if titulo_tema != "Erro":
         salvar_arquivo(texto, titulo_tema)
     else:
-        print("Não foi possível gerar o artigo devido à falta de chave API.")
+        print("❌ ERRO FATAL: Não foi possível gerar o artigo.")
+        sys.exit(1)
