@@ -86,9 +86,22 @@ function getRotatingProducts() {
   return selections;
 }
 
+// Function to get 2 specific "Flash" offers
+function getDailyOffers() {
+  const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
+  // We take products that are likely different from the main vitrine by using a large offset
+  const offsetProducts = [...PRODUCTS].reverse();
+  const selections = [
+    offsetProducts[dayOfYear % offsetProducts.length],
+    offsetProducts[(dayOfYear + 5) % offsetProducts.length]
+  ];
+  return selections;
+}
+
 export default function Home() {
   const posts = getPosts();
   const rotatingProducts = getRotatingProducts();
+  const dailyOffers = getDailyOffers();
 
   return (
     <main className="min-h-screen bg-gray-50">
@@ -114,6 +127,23 @@ export default function Home() {
       <div className="container mx-auto px-4 py-4 flex justify-center">
         <AdSensePlaceholder slot="HOME_HERO_BOTTOM_SLOT" className="w-full h-[100px] max-w-5xl" />
       </div>
+
+      {/* Ofertas Flash Section */}
+      <section className="container mx-auto px-4 py-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {dailyOffers.map(product => (
+            <div key={`offer-${product.id}`} className="relative">
+              <div className="absolute top-4 left-4 z-10 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter shadow-sm animate-pulse">
+                Oferta do Dia
+              </div>
+              <ProductCard
+                brandRaw={product.brand}
+                productName={product.name}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Vitrine Grid */}
       <section className="container mx-auto px-4 py-6">
