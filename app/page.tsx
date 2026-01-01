@@ -1,4 +1,4 @@
-
+// Cache bust: 2026-01-01-v2
 import ProductCard from "@/components/ProductCard";
 import SeasonalPromo from "@/components/SeasonalPromo";
 import fs from "fs";
