@@ -10,7 +10,7 @@ export default function Sobre() {
                 <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                     <div className="w-full md:w-1/3 relative aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-white transform transition-transform hover:scale-105">
                         <Image
-                            src="/andrezza-mota.png"
+                            src="/andrezza-mota.jpg"
                             alt="Andrezza Mota"
                             fill
                             className="object-cover"
