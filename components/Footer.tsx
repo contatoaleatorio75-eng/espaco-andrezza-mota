@@ -1,5 +1,6 @@
 
 import { FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function Footer() {
     return (
@@ -46,7 +47,7 @@ export default function Footer() {
 
                 <div className="border-t border-gray-200 pt-8 mt-8">
                     <p className="text-gray-500 text-sm">
-                        © {new Date().getFullYear()} Espaço Andrezza Mota. Consultoria Oficial Multimarcas.
+                        © {new Date().getFullYear()} Espaço Andrezza Mota. <Link href="/politica-de-privacidade" className="hover:text-am-green">Política de Privacidade</Link>.
                     </p>
                     <p className="text-gray-400 text-xs mt-2">
                         Natura, Boticário, Eudora, O.U.I, Avon e Tupperware são marcas registradas de seus respectivos proprietários.

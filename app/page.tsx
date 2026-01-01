@@ -74,7 +74,7 @@ export default function Home() {
           <div className="h-px bg-gray-300 w-16"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto mb-12">
           <ProductCard brandRaw="natura" productName="Hidratante Tododia Noz Pecã e Cacau - 400ml" />
           <ProductCard brandRaw="boticario" productName="Malbec Gold Desodorante Colônia 100ml" />
           <ProductCard brandRaw="eudora" productName="Siàge Nutri Rosé Shampoo + Condicionador" />

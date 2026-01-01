@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 import Header from "@/components/Header";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 import Script from "next/script";
 
 export default function RootLayout({
@@ -44,6 +45,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <CookieConsent />
         <WhatsAppButton />
       </body>
     </html>

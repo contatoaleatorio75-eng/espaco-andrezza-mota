@@ -26,7 +26,7 @@ export default function Header() {
                     </div>
 
                     <div className="flex flex-col">
-                        <h1 className="text-xl md:text-2xl font-serif font-medium text-am-black tracking-tight leading-none">
+                        <h1 className="text-xl md:text-2xl font-serif font-black text-am-black tracking-tight leading-none">
                             Espaço Andrezza Mota
                         </h1>
                         <p className="text-[10px] text-gray-600 uppercase tracking-widest font-light hidden sm:block">
