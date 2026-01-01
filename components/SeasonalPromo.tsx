@@ -77,11 +77,37 @@ export default function SeasonalPromo() {
                 id: "carnival",
                 title: "🎉 Carnaval 🎉",
                 message: "Brilhe na folia com nossas makes e protetores solares!",
-                // Approximate for 2026 based on user request context, or general feb window
-                startDate: new Date(currentYear, 1, 1), // Feb 1
-                endDate: new Date(currentYear, 1, 28, 23, 59, 59), // Feb 28
+                startDate: new Date(currentYear, 1, 1),
+                endDate: new Date(currentYear, 1, 28, 23, 59, 59),
                 bgColor: "bg-purple-100",
                 textColor: "text-purple-800",
+            },
+            {
+                id: "easter",
+                title: "🐰 Feliz Páscoa 🐰",
+                message: "Ofertas doces como chocolate para você se cuidar!",
+                startDate: new Date(currentYear, 2, 25),
+                endDate: new Date(currentYear, 3, 5, 23, 59, 59),
+                bgColor: "bg-yellow-100",
+                textColor: "text-yellow-900",
+            },
+            {
+                id: "pink-october",
+                title: "🎀 Outubro Rosa 🎀",
+                message: "Cuidado e prevenção. Apoie esta causa com a gente.",
+                startDate: new Date(currentYear, 9, 1),
+                endDate: new Date(currentYear, 9, 31, 23, 59, 59),
+                bgColor: "bg-pink-200",
+                textColor: "text-pink-900",
+            },
+            {
+                id: "christmas",
+                title: "🎄 Natal Mágico 🎄",
+                message: "Encontre o presente perfeito para quem você ama.",
+                startDate: new Date(currentYear, 11, 1),
+                endDate: new Date(currentYear, 11, 26, 23, 59, 59),
+                bgColor: "bg-red-600",
+                textColor: "text-white",
             },
 
             // Monthly / Generic Rotation (Fallbacks)
@@ -89,7 +115,7 @@ export default function SeasonalPromo() {
                 id: "natura-month",
                 title: "🧡 Mês da Beleza Natura 🧡",
                 message: "As melhores fragrâncias e hidratação com ofertas exclusivas.",
-                startDate: new Date(currentYear, 0, 1), // Cycle fallback
+                startDate: new Date(currentYear, 0, 1),
                 endDate: new Date(currentYear, 11, 31),
                 bgColor: "bg-orange-600",
                 textColor: "text-white",
@@ -100,13 +126,18 @@ export default function SeasonalPromo() {
         const activePromos = promotions.filter(p => today >= p.startDate && today <= p.endDate);
 
         if (activePromos.length > 0) {
-            // Priority: Specific events > Catch-all Month
-            const seasonalEvents = [
-                "black-friday", "mothers-day", "fathers-day", "childrens-day", "consumer-day", "carnival"
+            // Priority Order: Specific events > Catch-all Month
+            const priorityOrder = [
+                "christmas", "black-friday", "pink-october", "childrens-day",
+                "fathers-day", "mothers-day", "easter", "consumer-day", "carnival"
             ];
-            const eventPromo = activePromos.find(p => seasonalEvents.includes(p.id));
 
-            setPromo(eventPromo || activePromos[0]);
+            // Find the active promo that appears earliest in our priority list
+            const sortedEvents = activePromos
+                .filter(p => priorityOrder.includes(p.id))
+                .sort((a, b) => priorityOrder.indexOf(a.id) - priorityOrder.indexOf(b.id));
+
+            setPromo(sortedEvents[0] || activePromos[0]);
         }
     }, []);
 

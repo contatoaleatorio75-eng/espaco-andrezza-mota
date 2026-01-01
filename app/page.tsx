@@ -53,14 +53,36 @@ function getPosts(): Post[] {
 function getRotatingProducts() {
   const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
 
-  // Deterministic shuffle based on day
-  const shuffled = [...PRODUCTS].sort((a, b) => {
-    const hashA = (a.id.charCodeAt(0) * dayOfYear) % 100;
-    const hashB = (b.id.charCodeAt(0) * dayOfYear) % 100;
-    return hashA - hashB;
+  // Group products by brand
+  const byBrand: Record<string, typeof PRODUCTS> = {
+    boticario: PRODUCTS.filter(p => p.brand === 'boticario'),
+    eudora: PRODUCTS.filter(p => p.brand === 'eudora'),
+    avon: PRODUCTS.filter(p => p.brand === 'avon'),
+    natura: PRODUCTS.filter(p => p.brand === 'natura'),
+    tupperware: PRODUCTS.filter(p => p.brand === 'tupperware'),
+  };
+
+  const priorityOrder = ['boticario', 'eudora', 'avon', 'natura', 'tupperware'] as const;
+  const selections: typeof PRODUCTS = [];
+
+  // 1. Pick one from each in order
+  priorityOrder.forEach(brand => {
+    const list = byBrand[brand];
+    if (list && list.length > 0) {
+      const index = dayOfYear % list.length;
+      selections.push(list[index]);
+    }
   });
 
-  return shuffled.slice(0, 6);
+  // 2. Fill the remaining slot (to get 6) with an extra from the first priority brand (Boticário)
+  // that isn't already selected, or just the next one
+  const firstBrandList = byBrand['boticario'];
+  if (firstBrandList && firstBrandList.length > 1) {
+    const secondIndex = (dayOfYear + 1) % firstBrandList.length;
+    selections.push(firstBrandList[secondIndex]);
+  }
+
+  return selections;
 }
 
 export default function Home() {
