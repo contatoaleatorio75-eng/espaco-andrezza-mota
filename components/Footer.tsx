@@ -15,7 +15,7 @@ export default function Footer() {
                         href="https://www.instagram.com/espacoandrezzamota"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-pink-600 transition-all transform hover:scale-110 hover:-translate-y-1"
+                        className="text-pink-600 hover:text-pink-700 transition-all transform hover:scale-110 hover:-translate-y-1"
                     >
                         <span className="sr-only">Instagram</span>
                         <FaInstagram className="h-10 w-10" />
@@ -26,7 +26,7 @@ export default function Footer() {
                         href="https://www.youtube.com/@espacoandrezzamota"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-red-600 transition-all transform hover:scale-110 hover:-translate-y-1"
+                        className="text-red-600 hover:text-red-700 transition-all transform hover:scale-110 hover:-translate-y-1"
                     >
                         <span className="sr-only">YouTube</span>
                         <FaYoutube className="h-10 w-10" />
@@ -37,7 +37,7 @@ export default function Footer() {
                         href="https://wa.me/c/553197111424"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-green-500 transition-all transform hover:scale-110 hover:-translate-y-1"
+                        className="text-green-500 hover:text-green-600 transition-all transform hover:scale-110 hover:-translate-y-1"
                     >
                         <span className="sr-only">WhatsApp Catalog</span>
                         <FaWhatsapp className="h-10 w-10" />

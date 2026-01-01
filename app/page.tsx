@@ -99,7 +99,7 @@ export default function Home() {
                 <h4 className="font-serif text-xl font-bold text-am-black mb-2">{post.title}</h4>
                 <p className="text-sm text-gray-500 mb-3">{post.date}</p>
                 <p className="text-gray-600 mb-4">{post.description}</p>
-                <button className="text-am-green font-semibold text-sm uppercase tracking-wide">Ler mais &rarr;</button>
+                <Link href={`/dicas/${post.slug}`} className="text-am-green font-semibold text-sm uppercase tracking-wide hover:underline">Ler mais &rarr;</Link>
               </div>
             ))
           ) : (
