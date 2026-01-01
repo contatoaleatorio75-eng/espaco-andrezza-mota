@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 import AdSensePlaceholder from "./AdSensePlaceholder";
 
 export default function Header() {
@@ -15,10 +16,13 @@ export default function Header() {
             <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
                 <Link href="/" className="flex items-center gap-3 group">
                     {/* Compact Logo */}
-                    <div className="relative w-12 h-12 transition-transform group-hover:scale-105">
-                        <div className="w-full h-full flex items-center justify-center border border-am-black rounded-lg bg-white/50">
-                            <span className="font-serif text-lg font-bold text-am-black">AM</span>
-                        </div>
+                    <div className="relative w-16 h-16 transition-transform group-hover:scale-105">
+                        <Image
+                            src="/logo-novo.jpg"
+                            alt="Logo Espaço Andrezza Mota"
+                            fill
+                            className="object-contain rounded-lg"
+                        />
                     </div>
 
                     <div className="flex flex-col">
@@ -26,7 +30,7 @@ export default function Header() {
                             Espaço Andrezza Mota
                         </h1>
                         <p className="text-[10px] text-gray-600 uppercase tracking-widest font-light hidden sm:block">
-                            Consultoria em Beleza
+                            Consultoria em Beleza e Bem Estar
                         </p>
                     </div>
                 </Link>

@@ -68,15 +68,15 @@ def gerar_artigo():
         try:
             client = genai.Client(api_key=GENAI_API_KEY)
             response = client.models.generate_content(
-                model='gemini-2.0-flash',
+                model='gemini-1.5-flash',
                 contents=prompt
             )
             return response.text, tema_escolhido
         except Exception as e:
             msg_erro = str(e)
             if "429" in msg_erro or "RESOURCE_EXHAUSTED" in msg_erro:
-                print(f"⚠️ Cota excedida (Tentativa {tentativa+1}/3). Aguardando 30 segundos...")
-                time.sleep(30)
+                print(f"⚠️ Cota excedida (Tentativa {tentativa+1}/3). Aguardando 60 segundos...")
+                time.sleep(60)
                 continue
             else:
                 print(f"Erro ao gerar conteúdo: {e}")

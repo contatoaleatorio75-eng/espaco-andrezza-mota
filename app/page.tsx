@@ -1,9 +1,11 @@
 
 import ProductCard from "@/components/ProductCard";
+import SeasonalPromo from "@/components/SeasonalPromo";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50">
+      <SeasonalPromo />
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-am-gradient-start to-white py-20 text-center px-4">
         <h2 className="text-3xl md:text-5xl font-serif font-bold text-am-black mb-6">
