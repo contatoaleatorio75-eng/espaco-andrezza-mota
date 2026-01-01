@@ -39,10 +39,22 @@ export default function Header() {
                 </Link>
 
                 <nav className="mt-4 md:mt-0">
-                    <ul className="flex space-x-6 md:space-x-8 text-sm md:text-base font-medium text-am-black/80">
-                        <li><Link href="/" className="hover:text-am-black transition-colors hover:underline decoration-am-green decoration-2">Lojas</Link></li>
-                        <li><Link href="/sobre" className="hover:text-am-black transition-colors hover:underline decoration-am-blue decoration-2">Sobre</Link></li>
-                        <li><Link href="/contato" className="hover:text-am-black transition-colors hover:underline decoration-am-green decoration-2">Contato</Link></li>
+                    <ul className="flex space-x-6 md:space-x-8 text-sm md:text-base font-bold uppercase tracking-widest">
+                        <li>
+                            <Link href="/" className="text-emerald-600 hover:text-emerald-700 transition-all hover:scale-110 inline-block border-b-2 border-transparent hover:border-emerald-600 pb-1">
+                                Lojas
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/sobre" className="text-sky-600 hover:text-sky-700 transition-all hover:scale-110 inline-block border-b-2 border-transparent hover:border-sky-600 pb-1">
+                                Sobre
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/contato" className="text-rose-600 hover:text-rose-700 transition-all hover:scale-110 inline-block border-b-2 border-transparent hover:border-rose-600 pb-1">
+                                Contato
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>
