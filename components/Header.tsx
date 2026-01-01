@@ -37,7 +37,7 @@ export default function Header() {
 
                 <nav className="mt-4 md:mt-0">
                     <ul className="flex space-x-6 md:space-x-8 text-sm md:text-base font-medium text-am-black/80">
-                        <li><Link href="/" className="hover:text-am-black transition-colors hover:underline decoration-am-green decoration-2">Blog</Link></li>
+                        <li><Link href="/" className="hover:text-am-black transition-colors hover:underline decoration-am-green decoration-2">Lojas</Link></li>
                         <li><Link href="/sobre" className="hover:text-am-black transition-colors hover:underline decoration-am-blue decoration-2">Sobre</Link></li>
                         <li><Link href="/contato" className="hover:text-am-black transition-colors hover:underline decoration-am-green decoration-2">Contato</Link></li>
                     </ul>
