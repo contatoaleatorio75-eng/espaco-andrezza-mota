@@ -60,9 +60,10 @@ function getRotatingProducts() {
     avon: PRODUCTS.filter(p => p.brand === 'avon'),
     natura: PRODUCTS.filter(p => p.brand === 'natura'),
     tupperware: PRODUCTS.filter(p => p.brand === 'tupperware'),
+    oui: PRODUCTS.filter(p => p.brand === 'oui'),
   };
 
-  const priorityOrder = ['boticario', 'eudora', 'avon', 'natura', 'tupperware'] as const;
+  const priorityOrder = ['boticario', 'eudora', 'oui', 'natura', 'avon', 'tupperware'] as const;
   const selections: typeof PRODUCTS = [];
 
   // 1. Pick one from each in order

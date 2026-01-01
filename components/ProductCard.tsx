@@ -15,6 +15,7 @@ const BRAND_STYLES: Record<string, { border: string, text: string, bg_accent: st
     eudora: { border: 'border-purple-600', text: 'text-purple-950', bg_accent: 'bg-purple-50', label: 'Eudora' },
     avon: { border: 'border-pink-500', text: 'text-pink-900', bg_accent: 'bg-pink-50', label: 'Avon' },
     tupperware: { border: 'border-blue-500', text: 'text-blue-900', bg_accent: 'bg-blue-50', label: 'Tupperware' },
+    oui: { border: 'border-slate-800', text: 'text-slate-900', bg_accent: 'bg-slate-50', label: 'O.U.i Paris' },
     default: { border: 'border-am-blue', text: 'text-am-black', bg_accent: 'bg-gradient-to-r from-am-green/30 to-am-blue/30', label: 'Oferta' }
 };
 

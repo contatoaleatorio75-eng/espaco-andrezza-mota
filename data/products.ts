@@ -2,7 +2,7 @@
 export interface Product {
     id: string;
     name: string;
-    brand: 'natura' | 'boticario' | 'eudora' | 'avon' | 'tupperware';
+    brand: 'natura' | 'boticario' | 'eudora' | 'avon' | 'tupperware' | 'oui';
     link?: string;
 }
 
@@ -18,6 +18,10 @@ export const PRODUCTS: Product[] = [
     { id: 'e2', name: 'Instance Baunilha Hidratante Corporal 400ml', brand: 'eudora' },
     { id: 'e3', name: 'Batom Matte Tint Eudora Glam', brand: 'eudora' },
     { id: 'e4', name: 'Eudora Royal Eau de Parfum 75ml', brand: 'eudora' },
+
+    // O.U.i
+    { id: 'o1', name: 'O.U.I Scapin 245 Eau de Parfum 75ml', brand: 'oui' },
+    { id: 'o2', name: 'O.U.I L’Amour-Esse 142 Eau de Parfum 75ml', brand: 'oui' },
 
     // Avon
     { id: 'a1', name: 'Renew Reversalist Creme Diurno FPS 25', brand: 'avon' },
