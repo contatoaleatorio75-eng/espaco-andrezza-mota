@@ -4,6 +4,7 @@ import path from "path";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 
 // Generate static params for all posts to enable static export
 export async function generateStaticParams() {
@@ -68,11 +69,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                     <p className="text-gray-500">{post.date}</p>
                 </header>
 
-                <div className="prose prose-pink max-w-none text-gray-700 leading-relaxed">
+                <div className="prose prose-pink max-w-none text-gray-700 leading-relaxed mb-12">
                     <ReactMarkdown>{post.content}</ReactMarkdown>
                 </div>
 
-                <div className="mt-12 pt-8 border-t border-gray-100 italic text-gray-500">
+                {/* Article Ad Extension */}
+                <div className="my-10 py-6 border-y border-gray-100 flex flex-col items-center">
+                    <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-4">Publicidade</p>
+                    <AdSensePlaceholder slot="ARTICLE_FOOTER_SLOT" className="w-full h-[250px] max-w-[300px] md:max-w-none md:h-[90px]" />
+                </div>
+
+                <div className="mt-12 pt-8 italic text-gray-500">
                     <p>Gostou dessa dica? Compartilhe com suas amigas ou me chame no WhatsApp para saber mais sobre os produtos!</p>
                 </div>
             </article>

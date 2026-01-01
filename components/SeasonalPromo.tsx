@@ -23,7 +23,8 @@ export default function SeasonalPromo() {
         // Given the request "Exemplo: Verão 2026... Dia das Mães (10/05)...", I'll set up for the current year.
 
         // Note: JS Months are 0-indexed (0 = Jan, 11 = Dec)
-        const currentYear = new Date().getFullYear();
+        const today = new Date();
+        const currentYear = today.getFullYear();
 
         const promotions: Promotion[] = [
             // Major Events (High Priority)
@@ -78,37 +79,34 @@ export default function SeasonalPromo() {
                 message: "Brilhe na folia com nossas makes e protetores solares!",
                 // Approximate for 2026 based on user request context, or general feb window
                 startDate: new Date(currentYear, 1, 1), // Feb 1
-                endDate: new Date(currentYear, 1, 20, 23, 59, 59), // Feb 20
+                endDate: new Date(currentYear, 1, 28, 23, 59, 59), // Feb 28
                 bgColor: "bg-purple-100",
                 textColor: "text-purple-800",
             },
 
-            // Seasons (Lower Priority - appear if no specific event)
+            // Monthly / Generic Rotation (Fallbacks)
             {
-                id: "summer",
-                title: "☀️ Verão 2026 ☀️",
-                message: "Proteção solar e hidratação para curtir o sol sem preocupação.",
-                startDate: new Date(currentYear, 0, 1), // Jan 1
-                endDate: new Date(currentYear, 2, 20, 23, 59, 59), // Mar 20
-                bgColor: "bg-orange-100",
-                textColor: "text-orange-800",
+                id: "natura-month",
+                title: "🧡 Mês da Beleza Natura 🧡",
+                message: "As melhores fragrâncias e hidratação com ofertas exclusivas.",
+                startDate: new Date(currentYear, 0, 1), // Cycle fallback
+                endDate: new Date(currentYear, 11, 31),
+                bgColor: "bg-orange-600",
+                textColor: "text-white",
             },
         ];
-
-        const today = new Date();
-
-        // Find active promotion with highest priority (defined by order in array? No, find specific first)
-        // Actually, let's sort or filter. 
-        // Logic: Specific events > Seasons.
 
         // Filter active promos
         const activePromos = promotions.filter(p => today >= p.startDate && today <= p.endDate);
 
         if (activePromos.length > 0) {
-            // If multiple, pick the one with the *shortest duration* (more specific) or just the first one defined above (priority list).
-            // Let's rely on finding the first one in the list above, but we put "Summer" last, which is good.
-            // So simple find is enough if ordered correctly.
-            setPromo(activePromos[0]);
+            // Priority: Specific events > Catch-all Month
+            const seasonalEvents = [
+                "black-friday", "mothers-day", "fathers-day", "childrens-day", "consumer-day", "carnival"
+            ];
+            const eventPromo = activePromos.find(p => seasonalEvents.includes(p.id));
+
+            setPromo(eventPromo || activePromos[0]);
         }
     }, []);
 

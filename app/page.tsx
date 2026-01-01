@@ -3,7 +3,9 @@ import ProductCard from "@/components/ProductCard";
 import SeasonalPromo from "@/components/SeasonalPromo";
 import fs from "fs";
 import path from "path";
-import Link from "next/link"; // Keeping Link if needed, though mostly using <a> or just div click could work, but Link is better.
+import Link from "next/link";
+import { PRODUCTS } from "@/data/products";
+import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 
 interface Post {
   slug: string;
@@ -47,15 +49,36 @@ function getPosts(): Post[] {
   }
 }
 
+// Function to get 6 rotating products based on the day
+function getRotatingProducts() {
+  const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
+
+  // Deterministic shuffle based on day
+  const shuffled = [...PRODUCTS].sort((a, b) => {
+    const hashA = (a.id.charCodeAt(0) * dayOfYear) % 100;
+    const hashB = (b.id.charCodeAt(0) * dayOfYear) % 100;
+    return hashA - hashB;
+  });
+
+  return shuffled.slice(0, 6);
+}
+
 export default function Home() {
   const posts = getPosts();
+  const rotatingProducts = getRotatingProducts();
 
   return (
     <main className="min-h-screen bg-gray-50">
       <SeasonalPromo />
+
+      {/* Top Banner Ad */}
+      <div className="container mx-auto px-4 pt-4 flex justify-center">
+        <AdSensePlaceholder slot="HOME_TOP_SLOT" className="w-full h-[90px] max-w-4xl" />
+      </div>
+
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-am-gradient-start to-white py-10 text-center px-4">
-        <h2 className="text-3xl md:text-5xl font-serif font-bold text-am-black mb-6">
+        <h2 className="text-3xl md:text-5xl font-serif font-black text-am-black mb-6">
           Bem-vinda ao seu momento de beleza
         </h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -63,6 +86,11 @@ export default function Home() {
           Consultoria especializada <strong>Natura, O Boticário, Eudora, O.U.I</strong> e muito mais.
         </p>
       </section>
+
+      {/* Mid Section Ad */}
+      <div className="container mx-auto px-4 py-4 flex justify-center">
+        <AdSensePlaceholder slot="HOME_HERO_BOTTOM_SLOT" className="w-full h-[100px] max-w-5xl" />
+      </div>
 
       {/* Vitrine Grid */}
       <section className="container mx-auto px-4 py-6">
@@ -74,13 +102,22 @@ export default function Home() {
           <div className="h-px bg-gray-300 w-16"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto mb-12">
-          <ProductCard brandRaw="natura" productName="Hidratante Tododia Noz Pecã e Cacau - 400ml" />
-          <ProductCard brandRaw="boticario" productName="Malbec Gold Desodorante Colônia 100ml" />
-          <ProductCard brandRaw="eudora" productName="Siàge Nutri Rosé Shampoo + Condicionador" />
-          <ProductCard brandRaw="oui" productName="L’Amour-Esse 142 Eau de Parfum" />
-          <ProductCard brandRaw="avon" productName="Renew Reversalist Creme Diurno FPS 25" />
-          <ProductCard brandRaw="tupperware" productName="Eco Tupper Garrafa 500ml" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
+          {rotatingProducts.map(product => (
+            <ProductCard
+              key={product.id}
+              brandRaw={product.brand}
+              productName={product.name}
+            />
+          ))}
+        </div>
+
+        {/* Ad between Products and Blog */}
+        <div className="container mx-auto px-4 py-8 flex justify-center border-y border-gray-100 mb-12">
+          <div className="text-center">
+            <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-4">Publicidade</p>
+            <AdSensePlaceholder slot="HOME_GRID_FOOTER_SLOT" className="w-full h-[250px] md:h-[90px] max-w-4xl" />
+          </div>
         </div>
 
         {/* Dicas de Beleza Section */}
@@ -92,23 +129,36 @@ export default function Home() {
           <div className="h-px bg-gray-300 w-16"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {posts.length > 0 ? (
             posts.map((post) => (
-              <div key={post.slug} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                <h4 className="font-serif text-xl font-bold text-am-black mb-2">{post.title}</h4>
-                <p className="text-sm text-gray-500 mb-3">{post.date}</p>
-                <p className="text-gray-600 mb-4">{post.description}</p>
-                <Link href={`/dicas/${post.slug}`} className="text-am-green font-semibold text-sm uppercase tracking-wide hover:underline">Ler mais &rarr;</Link>
+              <div key={post.slug} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col justify-between">
+                <div>
+                  <h4 className="font-serif text-2xl font-bold text-am-black mb-3">{post.title}</h4>
+                  <p className="text-sm text-gray-500 mb-4">{post.date}</p>
+                  <p className="text-gray-600 mb-6 line-clamp-3">{post.description}</p>
+                </div>
+                <Link href={`/dicas/${post.slug}`} className="text-am-green font-bold text-sm uppercase tracking-widest hover:underline decoration-2 underline-offset-4">
+                  Ler dica completa &rarr;
+                </Link>
               </div>
             ))
           ) : (
-            <p className="text-center text-gray-500 italic col-span-full">
+            <p className="text-center text-gray-500 italic col-span-full py-12">
               Novas dicas estão sendo preparadas com carinho para você...
             </p>
           )}
         </div>
       </section>
+
+      {/* Bottom Sticky-like Ad */}
+      <div className="bg-white border-t border-gray-100 py-8 mt-16">
+        <div className="container mx-auto px-4 flex flex-col items-center">
+          <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-4">Recomendado para você</p>
+          <AdSensePlaceholder slot="HOME_FOOTER_ADS_SLOT" className="w-full h-[280px] md:h-[150px] max-w-6xl" />
+        </div>
+      </div>
     </main>
   );
 }
+

@@ -10,9 +10,11 @@ const STORE_LINKS: Record<string, string> = {
 };
 
 const BRAND_STYLES: Record<string, { border: string, text: string, bg_accent: string, label: string }> = {
-    natura: { border: 'border-am-green', text: 'text-am-black', bg_accent: 'bg-am-green/20', label: 'Natura' },
-    boticario: { border: 'border-am-blue', text: 'text-am-black', bg_accent: 'bg-am-blue/20', label: 'O Boticário' },
-    eudora: { border: 'border-purple-300', text: 'text-am-black', bg_accent: 'bg-purple-100', label: 'Eudora' },
+    natura: { border: 'border-orange-500', text: 'text-orange-900', bg_accent: 'bg-orange-50', label: 'Natura' },
+    boticario: { border: 'border-emerald-600', text: 'text-emerald-900', bg_accent: 'bg-emerald-50', label: 'O Boticário' },
+    eudora: { border: 'border-purple-600', text: 'text-purple-950', bg_accent: 'bg-purple-50', label: 'Eudora' },
+    avon: { border: 'border-pink-500', text: 'text-pink-900', bg_accent: 'bg-pink-50', label: 'Avon' },
+    tupperware: { border: 'border-blue-500', text: 'text-blue-900', bg_accent: 'bg-blue-50', label: 'Tupperware' },
     default: { border: 'border-am-blue', text: 'text-am-black', bg_accent: 'bg-gradient-to-r from-am-green/30 to-am-blue/30', label: 'Oferta' }
 };
 
