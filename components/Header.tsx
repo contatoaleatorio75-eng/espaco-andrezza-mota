@@ -1,7 +1,7 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import AdSensePlaceholder from "./AdSensePlaceholder";
+import { SITE_SETTINGS } from "@/data/site-settings";
 
 export default function Header() {
     return (
@@ -16,7 +16,10 @@ export default function Header() {
             <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
                 <Link href="/" className="flex items-center gap-3 group">
                     {/* Compact Logo */}
-                    <div className="relative w-20 h-20 transition-transform group-hover:scale-105">
+                    <div
+                        className="relative transition-transform group-hover:scale-105"
+                        style={{ width: SITE_SETTINGS.logoSize, height: SITE_SETTINGS.logoSize }}
+                    >
                         <Image
                             src="/logo-novo.jpg"
                             alt="Logo Espaço Andrezza Mota"

@@ -22,6 +22,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
 import Script from "next/script";
+import { SITE_SETTINGS } from "@/data/site-settings";
 
 export default function RootLayout({
   children,
@@ -38,6 +39,18 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          :root {
+            --primary-color: ${SITE_SETTINGS.colors.primary};
+            --secondary-color: ${SITE_SETTINGS.colors.secondary};
+            --bg-color: ${SITE_SETTINGS.colors.background};
+            --text-color: ${SITE_SETTINGS.colors.text};
+            --accent-color: ${SITE_SETTINGS.colors.accent};
+            --watermark-opacity: ${SITE_SETTINGS.watermark.enabled ? SITE_SETTINGS.watermark.opacity : 0};
+            --watermark-size: ${SITE_SETTINGS.watermark.size}px;
+          }
+        `}} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
