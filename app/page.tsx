@@ -24,7 +24,7 @@ function getPosts(): Post[] {
 
     const fileNames = fs.readdirSync(postsDirectory);
     const posts = fileNames
-      .filter((fileName) => fileName.endsWith(".md"))
+      .filter((fileName) => fileName.endsWith(".md") && !fileName.includes("sample-post"))
       .map((fileName) => {
         const fullPath = path.join(postsDirectory, fileName);
         const fileContents = fs.readFileSync(fullPath, "utf8");
