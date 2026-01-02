@@ -45,15 +45,23 @@ export default function Sobre() {
                             Trabalho com as melhores marcas do mercado nacional e internacional, incluindo <strong>Natura, Boticário, Eudora, O.U.I, Avon e Tupperware</strong>.
                         </p>
 
-                        <div className="py-4 flex justify-center md:justify-start">
-                            <div className="relative w-full h-48 rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white p-2">
-                                <Image
-                                    src="/mockups/fragrance.png"
-                                    alt="Fragrâncias de Luxo"
-                                    fill
-                                    className="object-contain p-4 bg-gray-50 rounded-lg"
-                                />
-                            </div>
+                        {/* Floating Decorative Carousel */}
+                        <div className="py-8 flex justify-center h-64 relative overflow-hidden">
+                            {DECORATIVE_IMAGES.map((img, idx) => (
+                                <div
+                                    key={img.src}
+                                    className={`absolute inset-0 flex justify-center items-center transition-opacity duration-1000 ${idx === currentIdx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                                >
+                                    <div className="relative w-full h-full max-w-[280px] floating">
+                                        <Image
+                                            src={img.src}
+                                            alt={img.alt}
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
                         </div>
 
                         <p>
