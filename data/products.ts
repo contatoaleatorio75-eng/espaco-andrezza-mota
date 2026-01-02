@@ -5,15 +5,14 @@ export interface Product {
     brand: 'natura' | 'boticario' | 'eudora' | 'avon' | 'tupperware' | 'oui';
     link?: string;
     isProntaEntrega?: boolean;
-    image?: string;
 }
 
 export const PRODUCTS: Product[] = [
     // Boticário
-    { id: 'b1', name: 'Malbec Desodorante Colônia 100ml', brand: 'boticario', image: '/mockups/fragrance.png' },
-    { id: 'b2', name: 'Lily Eau de Parfum 75ml', brand: 'boticario', image: '/mockups/fragrance.png' },
-    { id: 'b3', name: 'Floratta Red Desodorante Colônia 75ml', brand: 'boticario', image: '/mockups/fragrance.png' },
-    { id: 'b4', name: 'Batom Matte Tint Eudora', brand: 'eudora', image: '/mockups/makeup.png' },
+    { id: 'b1', name: 'Malbec Desodorante Colônia 100ml', brand: 'boticario' },
+    { id: 'b2', name: 'Lily Eau de Parfum 75ml', brand: 'boticario' },
+    { id: 'b3', name: 'Floratta Red Desodorante Colônia 75ml', brand: 'boticario' },
+    { id: 'b4', name: 'Batom Matte Tint Eudora', brand: 'eudora' },
 
     // Eudora
     { id: 'e1', name: 'Siàge Nutri Rosé Shampoo + Condicionador', brand: 'eudora' },
@@ -26,8 +25,8 @@ export const PRODUCTS: Product[] = [
     { id: 'o2', name: 'O.U.I L’Amour-Esse 142 Eau de Parfum 75ml', brand: 'oui' },
 
     // Avon
-    { id: 'a1', name: 'Renew Reversalist Dia FPS 25 50g', brand: 'avon', image: '/mockups/cream.png' },
-    { id: 'a2', name: 'Far Away Glamour Deo Parfum 50ml', brand: 'avon', image: '/mockups/fragrance.png' },
+    { id: 'a1', name: 'Renew Reversalist Dia FPS 25 50g', brand: 'avon' },
+    { id: 'a2', name: 'Far Away Glamour Deo Parfum 50ml', brand: 'avon' },
     { id: 'a3', name: 'Far Away Glamour Deo Parfum 50ml', brand: 'avon' },
     { id: 'a4', name: 'Lápis para Olhos Glimmerstick Avon', brand: 'avon' },
 

@@ -26,6 +26,18 @@ export default function Sobre() {
                             Minha paixão é ajudar você a encontrar os produtos perfeitos para realçar sua beleza natural.
                             Trabalho com as melhores marcas do mercado nacional e internacional, incluindo <strong>Natura, Boticário, Eudora, O.U.I, Avon e Tupperware</strong>.
                         </p>
+
+                        <div className="py-4 flex justify-center md:justify-start">
+                            <div className="relative w-full h-48 rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white p-2">
+                                <Image
+                                    src="/mockups/fragrance.png"
+                                    alt="Fragrâncias de Luxo"
+                                    fill
+                                    className="object-contain p-4 bg-gray-50 rounded-lg"
+                                />
+                            </div>
+                        </div>
+
                         <p>
                             Neste espaço, compartilho não apenas produtos, mas dicas valiosas de skincare, maquiagem e perfumaria
                             para que você se sinta confiante e radiante todos os dias.

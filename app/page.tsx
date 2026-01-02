@@ -137,8 +137,16 @@ export default function Home() {
       </section>
 
       {/* Pronta Entrega Section - WhatsApp Focused */}
-      <section className="bg-emerald-50 py-4 border-b border-emerald-100">
-        <div className="container mx-auto px-4">
+      <section className="bg-emerald-50 py-4 border-b border-emerald-100 relative overflow-hidden">
+        {/* Decorative Background Element */}
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none translate-x-1/4 -translate-y-1/4 rotate-12">
+          <Image src="/mockups/cream.png" alt="" fill className="object-contain" />
+        </div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10 pointer-events-none -translate-x-1/4 translate-y-1/4 -rotate-12">
+          <Image src="/mockups/soap.png" alt="" fill className="object-contain" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-center mb-4">
             <div className="h-px bg-emerald-300 w-16"></div>
             <a
@@ -164,7 +172,6 @@ export default function Home() {
                 <ProductCard
                   brandRaw={product.brand}
                   productName={product.name}
-                  image={product.image}
                   link="https://wa.me/c/553197111424"
                 />
               </div>
@@ -189,7 +196,6 @@ export default function Home() {
               key={product.id}
               brandRaw={product.brand}
               productName={product.name}
-              image={product.image}
               link={product.link}
             />
           ))}

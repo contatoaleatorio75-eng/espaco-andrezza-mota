@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import React from 'react';
 
 const STORE_LINKS: Record<string, string> = {
     natura: "https://minhaloja.natura.com/consultoria/andrezzamota",
@@ -22,10 +22,9 @@ interface ProductCardProps {
     brandRaw?: string;
     productName: string;
     link?: string;
-    image?: string;
 }
 
-export default function ProductCard({ brandRaw, productName, link, image }: ProductCardProps) {
+export default function ProductCard({ brandRaw, productName, link }: ProductCardProps) {
     const brandKey = brandRaw?.toLowerCase().trim().replace('ó', 'o').replace('á', 'a') || 'default';
     const style = BRAND_STYLES[brandKey] || BRAND_STYLES.default;
 
@@ -34,22 +33,10 @@ export default function ProductCard({ brandRaw, productName, link, image }: Prod
     const finalLink = link || STORE_LINKS[brandKey] || fallbackLink;
 
     return (
-        <div className={`my-1 w-full max-w-2xl mx-auto bg-white border-2 ${style.border} rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md hover:-translate-y-1 h-full flex flex-col`}>
-            {/* Image Section */}
-            {image && (
-                <div className="relative w-full aspect-[4/3] bg-gray-100 overflow-hidden">
-                    <Image
-                        src={image}
-                        alt={productName}
-                        fill
-                        className="object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                </div>
-            )}
-
-            <div className={`flex flex-col md:flex-row flex-1 ${!image ? 'h-full' : ''}`}>
-                <div className={`${style.bg_accent} py-4 md:w-24 lg:w-32 flex items-center justify-center shrink-0`}>
-                    <span className={`font-bold text-xs lg:text-sm uppercase tracking-widest ${style.text} md:-rotate-90 whitespace-nowrap`}>
+        <div className={`my-1 w-full max-w-2xl mx-auto bg-white border-2 ${style.border} rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md hover:-translate-y-1 h-full`}>
+            <div className="flex flex-col md:flex-row h-full">
+                <div className={`${style.bg_accent} py-4 md:w-32 flex items-center justify-center`}>
+                    <span className={`font-bold text-sm uppercase tracking-widest ${style.text} md:-rotate-90 whitespace-nowrap`}>
                         {style.label}
                     </span>
                 </div>
