@@ -30,9 +30,14 @@ export default function Sobre() {
                             Neste espaço, compartilho não apenas produtos, mas dicas valiosas de skincare, maquiagem e perfumaria
                             para que você se sinta confiante e radiante todos os dias.
                         </p>
-                        <p className="font-semibold text-am-green mt-6">
-                            Sinta-se à vontade para me chamar no WhatsApp e tirar suas dúvidas!
-                        </p>
+                        <a
+                            href={`https://wa.me/553197111424?text=${encodeURIComponent("Oi Andrezza! Estava lendo sobre você no site e gostaria de tirar uma dúvida.")}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-semibold text-am-green mt-6 block hover:text-am-black transition-colors"
+                        >
+                            Sinta-se à vontade para me chamar no WhatsApp e tirar suas dúvidas! <span className="pointing-hand">👈</span>
+                        </a>
                     </div>
                 </div>
             </div>
