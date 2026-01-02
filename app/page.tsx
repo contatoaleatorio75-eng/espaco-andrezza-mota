@@ -164,6 +164,7 @@ export default function Home() {
                 <ProductCard
                   brandRaw={product.brand}
                   productName={product.name}
+                  image={product.image}
                   link="https://wa.me/c/553197111424"
                 />
               </div>
@@ -188,6 +189,7 @@ export default function Home() {
               key={product.id}
               brandRaw={product.brand}
               productName={product.name}
+              image={product.image}
               link={product.link}
             />
           ))}
