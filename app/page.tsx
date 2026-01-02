@@ -142,7 +142,7 @@ export default function Home() {
           <div className="flex items-center justify-center mb-4">
             <div className="h-px bg-emerald-300 w-16"></div>
             <a
-              href={`https://wa.me/553197111424?text=${encodeURIComponent("Oi Andrezza! Vi sua seção de Pronta Entrega no site e gostaria de saber o que você tem disponível agora.")}`}
+              href={`https://wa.me/c/553197111424?text=${encodeURIComponent("Oi Andrezza! Vi sua seção de Pronta Entrega no site e gostaria de saber o que você tem disponível agora.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="mx-4 text-xl md:text-2xl font-bold text-emerald-900 uppercase tracking-widest text-center hover:text-green-600 transition-colors flex items-center gap-2"

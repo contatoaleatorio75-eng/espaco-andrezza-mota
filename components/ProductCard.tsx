@@ -6,7 +6,7 @@ const STORE_LINKS: Record<string, string> = {
     boticario: "https://minhaloja.grupoboticario.com.br/espacoandrezzamota",
     eudora: "https://minhaloja.grupoboticario.com.br/espacoandrezzamota",
     oui: "https://minhaloja.grupoboticario.com.br/espacoandrezzamota",
-    whatsapp: "https://wa.me/553197111424"
+    whatsapp: "https://wa.me/c/553197111424"
 };
 
 const BRAND_STYLES: Record<string, { border: string, text: string, bg_accent: string, label: string }> = {
