@@ -112,28 +112,38 @@ export default function Home() {
   const rotatingProducts = getRotatingProducts();
   const dailyOffers = getDailyOffers();
 
+  const prontaEntrega = PRODUCTS.filter(p => p.isProntaEntrega);
+
   return (
     <main className="min-h-screen bg-gray-50">
       <SeasonalPromo />
 
-      {/* Top Banner Feature */}
-      <div className="container mx-auto px-4 pt-4 flex justify-center">
-        <div className="w-full h-[90px] max-w-4xl bg-am-green/5 rounded-xl border border-am-green/10 flex items-center justify-center">
-          <p className="text-am-green font-serif italic text-lg text-center px-4">
-            Curadoria especial de produtos para realçar sua beleza natural.
+      {/* Pronta Entrega Section - WhatsApp Focused */}
+      <section className="bg-emerald-50 py-12 border-b border-emerald-100">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center mb-8">
+            <div className="h-px bg-emerald-300 w-16"></div>
+            <h3 className="mx-4 text-xl md:text-2xl font-bold text-emerald-900 uppercase tracking-widest text-center">
+              🌻 Pronta Entrega em Betim
+            </h3>
+            <div className="h-px bg-emerald-300 w-16"></div>
+          </div>
+          <p className="text-center text-emerald-700 mb-10 max-w-xl mx-auto italic">
+            Produtos em estoque para entrega imediata. Clique para reservar via WhatsApp!
           </p>
-        </div>
-      </div>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-am-gradient-start to-white py-10 text-center px-4">
-        <h2 className="text-3xl md:text-5xl font-serif font-black text-am-black mb-6">
-          Bem-vinda ao seu momento de beleza
-        </h2>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
-          Descubra as melhores dicas e produtos das marcas que você ama.
-          Consultoria especializada <strong>Natura, O Boticário, Eudora, O.U.I</strong> e muito mais.
-        </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {prontaEntrega.map(product => (
+              <ProductCard
+                key={`pe-${product.id}`}
+                brandRaw={product.brand}
+                productName={product.name}
+                // Force WhatsApp message for Pronta Entrega
+                link={`https://wa.me/553197111424?text=${encodeURIComponent(`Oi Andrezza! Quero reservar o item de pronta entrega: "${product.name}"`)}`}
+              />
+            ))}
+          </div>
+        </div>
       </section>
 
 
