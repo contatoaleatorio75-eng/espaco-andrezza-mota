@@ -1,7 +1,25 @@
+"use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
+
+const DECORATIVE_IMAGES = [
+    { src: "/mockups/fragrance.png", alt: "Perfume de Luxo" },
+    { src: "/mockups/cream.png", alt: "Creme Premium" },
+    { src: "/mockups/makeup.png", alt: "Maquiagem Elegante" },
+    { src: "/mockups/soap.png", alt: "Sabonetes Orgânicos" },
+];
 
 export default function Sobre() {
+    const [currentIdx, setCurrentIdx] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIdx((prev) => (prev + 1) % DECORATIVE_IMAGES.length);
+        }, 4000);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
         <main className="container mx-auto px-4 py-12 text-am-black">
             <div className="max-w-4xl mx-auto">
