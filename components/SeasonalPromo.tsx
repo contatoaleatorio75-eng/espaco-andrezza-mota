@@ -10,6 +10,7 @@ type Promotion = {
     endDate: Date;
     bgColor: string;
     textColor: string;
+    link?: string;
 };
 
 export default function SeasonalPromo() {
@@ -119,6 +120,7 @@ export default function SeasonalPromo() {
                 endDate: new Date(currentYear, 11, 31),
                 bgColor: "bg-orange-600",
                 textColor: "text-white",
+                link: "https://minhaloja.natura.com/consultoria/andrezzamota",
             },
         ];
 
@@ -143,12 +145,22 @@ export default function SeasonalPromo() {
 
     if (!promo) return null;
 
-    return (
-        <div className={`w-full py-3 px-4 text-center font-medium ${promo.bgColor} ${promo.textColor} shadow-sm transition-all duration-500`}>
+    const content = (
+        <div className={`w-full py-3 px-4 text-center font-medium ${promo.bgColor} ${promo.textColor} shadow-sm transition-all duration-300 ${promo.link ? "hover:brightness-110 cursor-pointer" : ""}`}>
             <p>
                 <span className="font-bold text-lg block sm:inline mr-2">{promo.title}</span>
                 {promo.message}
             </p>
         </div>
     );
+
+    if (promo.link) {
+        return (
+            <a href={promo.link} target="_blank" rel="noopener noreferrer" className="block focus:outline-none">
+                {content}
+            </a>
+        );
+    }
+
+    return content;
 }
