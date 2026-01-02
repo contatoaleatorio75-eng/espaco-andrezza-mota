@@ -152,14 +152,14 @@ export default function Home() {
             <div className="h-px bg-emerald-300 w-16"></div>
           </div>
           <p className="text-center text-emerald-700 mb-2 max-w-xl mx-auto italic">
-            Produtos em estoque para entrega imediata. Clique para reservar via WhatsApp!
+            Produtos para entrega imediata conforme estoque. Clique para reservar via WhatsApp!
           </p>
           <p className="text-center text-emerald-600 text-[10px] mb-4 font-medium uppercase tracking-tighter">
             *Consulte condições
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 max-w-7xl mx-auto">
-            {prontaEntrega.map(product => (
+            {prontaEntrega.slice(0, 4).map(product => (
               <div key={`pe-${product.id}`} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)] xl:w-[calc(25%-1rem)] max-w-sm">
                 <ProductCard
                   brandRaw={product.brand}
