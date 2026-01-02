@@ -147,27 +147,45 @@ export default function Home() {
       </section>
 
       {/* Horizontal Floating Ribbon Showcase */}
-      <div className="relative py-12 overflow-hidden bg-white/50 backdrop-blur-sm border-y border-gray-100 mb-4">
-        <div className="flex animate-marquee gap-8 px-4">
-          {[...DECORATIVE_IMAGES, ...DECORATIVE_IMAGES, ...DECORATIVE_IMAGES].map((img, idx) => (
-            <div
-              key={`${img.src}-${idx}`}
-              className="relative w-40 h-40 shrink-0 floating"
-              style={{ animationDelay: `${(idx % 4) * 0.5}s`, animationDuration: `${3 + (idx % 3)}s` }}
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                className="object-contain"
-              />
-            </div>
-          ))}
+      <div className="relative py-16 overflow-hidden bg-white/40 backdrop-blur-md border-y border-gray-100 mb-8 shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]">
+        <div className="flex animate-marquee gap-12 px-4 py-4">
+          {[...Array(30)].map((_, i) => {
+            const baseImg = DECORATIVE_IMAGES[i % DECORATIVE_IMAGES.length];
+            const hueRotate = (i * 137.5) % 360;
+            const brightness = 95 + (i % 3) * 5;
+            const scale = 0.82 + (i % 5) * 0.04;
+
+            return (
+              <div
+                key={`home-item-${i}`}
+                className="relative w-40 h-40 shrink-0 floating group"
+                style={{
+                  animationDelay: `${(i * 0.4) % 4}s`,
+                  animationDuration: `${3.5 + (i % 4) * 0.5}s`,
+                  transform: `scale(${scale})`
+                }}
+              >
+                <div
+                  className="relative w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
+                  style={{
+                    filter: `hue-rotate(${hueRotate}deg) brightness(${brightness}%) contrast(105%)`,
+                  }}
+                >
+                  <Image
+                    src={baseImg.src}
+                    alt={baseImg.alt}
+                    fill
+                    className="object-contain drop-shadow-md"
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Decorative gradients for edges */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-50/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-50/80 to-transparent z-10 pointer-events-none"></div>
       </div>
 
       {/* Pronta Entrega Section - WhatsApp Focused */}
