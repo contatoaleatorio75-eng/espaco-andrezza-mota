@@ -75,8 +75,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
 
 
-                <div className="mt-12 pt-8 italic text-gray-500">
-                    <p>Gostou dessa dica? Compartilhe com suas amigas ou me chame no WhatsApp para saber mais sobre os produtos!</p>
+                <div className="mt-12 pt-8 border-t border-gray-100 text-center">
+                    <p className="text-gray-600 mb-4">Gostou dessa dica? Compartilhe com suas amigas!</p>
+                    <a
+                        href={`https://wa.me/553197111424?text=${encodeURIComponent("Oi Andrezza! Acabei de ler a dica '" + post.title + "' no seu site e gostaria de saber mais sobre os produtos.")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-2xl font-bold transition-all transform hover:scale-105 shadow-md"
+                    >
+                        Me chame no WhatsApp para saber mais!
+                    </a>
                 </div>
             </article>
         </main>
