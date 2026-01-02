@@ -88,9 +88,6 @@ export default function Sobre() {
                     "Beleza é sentir-se bem na própria pele."
                 </p>
             </div>
-        </div>
-                </div >
-            </div >
-        </main >
+        </main>
     );
 }
