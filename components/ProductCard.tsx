@@ -38,7 +38,7 @@ export default function ProductCard({ brandRaw, productName, link }: ProductCard
     const finalLink = link || STORE_LINKS[brandKey] || fallbackLink;
 
     return (
-        <div className={`my-10 w-full max-w-2xl mx-auto bg-white border-2 ${style.border} rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md hover:-translate-y-1`}>
+        <div className={`my-4 w-full max-w-2xl mx-auto bg-white border-2 ${style.border} rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md hover:-translate-y-1`}>
             <div className="flex flex-col md:flex-row">
                 <div className={`${style.bg_accent} py-4 md:w-32 flex items-center justify-center`}>
                     <span className={`font-bold text-sm uppercase tracking-widest ${style.text} md:-rotate-90`}>

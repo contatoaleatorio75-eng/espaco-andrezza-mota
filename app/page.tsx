@@ -119,16 +119,21 @@ export default function Home() {
       <SeasonalPromo />
 
       {/* Pronta Entrega Section - WhatsApp Focused */}
-      <section className="bg-emerald-50 py-12 border-b border-emerald-100">
+      <section className="bg-emerald-50 py-6 border-b border-emerald-100">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center mb-8">
+          <div className="flex items-center justify-center mb-6">
             <div className="h-px bg-emerald-300 w-16"></div>
-            <h3 className="mx-4 text-xl md:text-2xl font-bold text-emerald-900 uppercase tracking-widest text-center">
+            <a
+              href={`https://wa.me/553197111424?text=${encodeURIComponent("Oi Andrezza! Vi sua seção de Pronta Entrega no site e gostaria de saber o que você tem disponível agora.")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-4 text-xl md:text-2xl font-bold text-emerald-900 uppercase tracking-widest text-center hover:text-green-600 transition-colors"
+            >
               🌻 Pronta Entrega em Betim
-            </h3>
+            </a>
             <div className="h-px bg-emerald-300 w-16"></div>
           </div>
-          <p className="text-center text-emerald-700 mb-10 max-w-xl mx-auto italic">
+          <p className="text-center text-emerald-700 mb-6 max-w-xl mx-auto italic">
             Produtos em estoque para entrega imediata. Clique para reservar via WhatsApp!
           </p>
 
