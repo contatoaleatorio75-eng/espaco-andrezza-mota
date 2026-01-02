@@ -118,6 +118,24 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       <SeasonalPromo />
 
+      {/* Ofertas Flash Section */}
+      <section className="container mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+          {dailyOffers.map(product => (
+            <div key={`offer-${product.id}`} className="relative">
+              <div className="absolute top-4 left-4 z-10 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter shadow-sm animate-pulse">
+                Oferta do Dia
+              </div>
+              <ProductCard
+                brandRaw={product.brand}
+                productName={product.name}
+                link={product.link}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Pronta Entrega Section - WhatsApp Focused */}
       <section className="bg-emerald-50 py-4 border-b border-emerald-100">
         <div className="container mx-auto px-4">
@@ -151,26 +169,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-
-
-      {/* Ofertas Flash Section */}
-      <section className="container mx-auto px-4 py-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {dailyOffers.map(product => (
-            <div key={`offer-${product.id}`} className="relative">
-              <div className="absolute top-4 left-4 z-10 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter shadow-sm animate-pulse">
-                Oferta do Dia
-              </div>
-              <ProductCard
-                brandRaw={product.brand}
-                productName={product.name}
-                link={product.link}
-              />
-            </div>
-          ))}
         </div>
       </section>
 
@@ -251,4 +249,3 @@ export default function Home() {
     </main>
   );
 }
-
