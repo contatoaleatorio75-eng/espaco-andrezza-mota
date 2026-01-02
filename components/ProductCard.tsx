@@ -22,12 +22,13 @@ const BRAND_STYLES: Record<string, { border: string, text: string, bg_accent: st
 interface ProductCardProps {
     brandRaw?: string;
     productName: string;
+    link?: string;
 }
 
-export default function ProductCard({ brandRaw, productName }: ProductCardProps) {
+export default function ProductCard({ brandRaw, productName, link }: ProductCardProps) {
     const brandKey = brandRaw?.toLowerCase().trim().replace('ó', 'o').replace('á', 'a') || 'default';
     const style = BRAND_STYLES[brandKey] || BRAND_STYLES.default;
-    const finalLink = STORE_LINKS[brandKey] || STORE_LINKS.whatsapp;
+    const finalLink = link || STORE_LINKS[brandKey] || STORE_LINKS.whatsapp;
 
     return (
         <div className={`my-10 w-full max-w-2xl mx-auto bg-white border-2 ${style.border} rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md hover:-translate-y-1`}>

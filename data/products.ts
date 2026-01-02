@@ -8,8 +8,8 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
     // Boticário
-    { id: 'b1', name: 'Malbec Gold Desodorante Colônia 100ml', brand: 'boticario' },
-    { id: 'b2', name: 'Lily Eau de Parfum 75ml', brand: 'boticario' },
+    { id: 'b1', name: 'Malbec Gold Desodorante Colônia 100ml', brand: 'boticario', link: 'https://wa.me/p/26463991873111111/553197111424' },
+    { id: 'b2', name: 'Lily Eau de Parfum 75ml', brand: 'boticario', link: 'https://wa.me/p/26463991873222222/553197111424' },
     { id: 'b3', name: 'Floratta Red Desodorante Colônia 75ml', brand: 'boticario' },
     { id: 'b4', name: 'Arbo Desodorante Colônia 100ml', brand: 'boticario' },
 
