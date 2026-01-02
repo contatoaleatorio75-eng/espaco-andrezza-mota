@@ -36,6 +36,22 @@ body {
   }
 }
 
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
 .pointing-hand {
   display: inline-block;
   animation: pointing 0.8s ease-in-out infinite;
