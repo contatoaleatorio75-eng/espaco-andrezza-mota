@@ -164,7 +164,7 @@ export default function Home() {
                 <ProductCard
                   brandRaw={product.brand}
                   productName={product.name}
-                  link={`https://wa.me/553197111424?text=${encodeURIComponent(`Oi Andrezza! Quero reservar o item de pronta entrega: "${product.name}"`)}`}
+                  link="https://wa.me/c/553197111424"
                 />
               </div>
             ))}

@@ -35,12 +35,12 @@ export default function Footer() {
 
                     {/* WhatsApp */}
                     <a
-                        href="https://wa.me/c/553197111424"
+                        href="https://wa.me/553197111424"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-green-500 hover:text-green-600 transition-all transform hover:scale-110 hover:-translate-y-1"
                     >
-                        <span className="sr-only">WhatsApp Catalog</span>
+                        <span className="sr-only">WhatsApp</span>
                         <FaWhatsapp className="h-10 w-10" />
                     </a>
                 </div>

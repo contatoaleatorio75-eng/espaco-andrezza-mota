@@ -14,7 +14,7 @@ export default function Contato() {
 
                 <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 mb-8">
                     <a
-                        href="https://wa.me/c/553197111424"
+                        href="https://wa.me/553197111424"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-4 bg-green-500 text-white font-bold py-4 px-8 rounded-full hover:bg-green-600 transition-transform transform hover:scale-105"
