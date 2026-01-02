@@ -7,6 +7,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { PRODUCTS } from "@/data/products";
 
+const DECORATIVE_IMAGES = [
+  { src: "/mockups/fragrance.png", alt: "Perfume de Luxo" },
+  { src: "/mockups/cream.png", alt: "Creme Premium" },
+  { src: "/mockups/makeup.png", alt: "Maquiagem Elegante" },
+  { src: "/mockups/soap.png", alt: "Sabonetes Orgânicos" },
+  { src: "/mockups/shampoo.png", alt: "Shampoo Premium" },
+  { src: "/mockups/nails.png", alt: "Esmaltes de Luxo" },
+];
+
 
 interface Post {
   slug: string;
@@ -136,6 +145,30 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Horizontal Floating Ribbon Showcase */}
+      <div className="relative py-12 overflow-hidden bg-white/50 backdrop-blur-sm border-y border-gray-100 mb-4">
+        <div className="flex animate-marquee gap-8 px-4">
+          {[...DECORATIVE_IMAGES, ...DECORATIVE_IMAGES, ...DECORATIVE_IMAGES].map((img, idx) => (
+            <div
+              key={`${img.src}-${idx}`}
+              className="relative w-40 h-40 shrink-0 floating"
+              style={{ animationDelay: `${(idx % 4) * 0.5}s`, animationDuration: `${3 + (idx % 3)}s` }}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                className="object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Decorative gradients for edges */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+      </div>
 
       {/* Pronta Entrega Section - WhatsApp Focused */}
       <section className="bg-emerald-50 py-4 border-b border-emerald-100 relative overflow-hidden">
