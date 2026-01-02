@@ -32,13 +32,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <Script
-          id="adsense-init"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4160276489030508"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+
         <style dangerouslySetInnerHTML={{
           __html: `
           :root {

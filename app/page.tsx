@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import { PRODUCTS } from "@/data/products";
-import AdSensePlaceholder from "@/components/AdSensePlaceholder";
+
 
 interface Post {
   slug: string;
@@ -49,41 +49,50 @@ function getPosts(): Post[] {
   }
 }
 
-// Function to get 6 rotating products based on the day
+// Function to get 12 rotating products based on the day
 function getRotatingProducts() {
   const dayOfYear = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24));
 
   // Group products by brand
-  const byBrand: Record<string, typeof PRODUCTS> = {
-    boticario: PRODUCTS.filter(p => p.brand === 'boticario'),
-    eudora: PRODUCTS.filter(p => p.brand === 'eudora'),
-    avon: PRODUCTS.filter(p => p.brand === 'avon'),
-    natura: PRODUCTS.filter(p => p.brand === 'natura'),
-    tupperware: PRODUCTS.filter(p => p.brand === 'tupperware'),
-    oui: PRODUCTS.filter(p => p.brand === 'oui'),
-  };
+  const brands = ['boticario', 'eudora', 'oui', 'natura', 'avon', 'tupperware'] as const;
+  const byBrand: Record<string, typeof PRODUCTS> = {};
+  brands.forEach(brand => {
+    byBrand[brand] = PRODUCTS.filter(p => p.brand === brand);
+  });
 
-  const priorityOrder = ['boticario', 'eudora', 'oui', 'natura', 'avon', 'tupperware'] as const;
   const selections: typeof PRODUCTS = [];
 
-  // 1. Pick one from each in order
-  priorityOrder.forEach(brand => {
+  // 1. Pick two from each brand to get 12
+  brands.forEach(brand => {
     const list = byBrand[brand];
     if (list && list.length > 0) {
-      const index = dayOfYear % list.length;
-      selections.push(list[index]);
+      // First selection
+      const index1 = dayOfYear % list.length;
+      selections.push(list[index1]);
+
+      // Second selection (if available)
+      if (list.length > 1) {
+        const index2 = (dayOfYear + 3) % list.length; // offset to pick a different one
+        // Ensure we don't pick the same one twice if there are enough products
+        if (index1 !== index2) {
+          selections.push(list[index2]);
+        } else if (list.length > 2) {
+          selections.push(list[(index1 + 1) % list.length]);
+        }
+      }
     }
   });
 
-  // 2. Fill the remaining slot (to get 6) with an extra from the first priority brand (Boticário)
-  // that isn't already selected, or just the next one
-  const firstBrandList = byBrand['boticario'];
-  if (firstBrandList && firstBrandList.length > 1) {
-    const secondIndex = (dayOfYear + 1) % firstBrandList.length;
-    selections.push(firstBrandList[secondIndex]);
+  // 2. If we still don't have 12 (due to some brands having few products), fill with whatever is left
+  if (selections.length < 12) {
+    const remainingCount = 12 - selections.length;
+    const pool = PRODUCTS.filter(p => !selections.find(s => s.id === p.id));
+    for (let i = 0; i < remainingCount && i < pool.length; i++) {
+      selections.push(pool[i]);
+    }
   }
 
-  return selections;
+  return selections.slice(0, 12);
 }
 
 // Function to get 2 specific "Flash" offers
@@ -107,9 +116,13 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       <SeasonalPromo />
 
-      {/* Top Banner Ad */}
+      {/* Top Banner Feature */}
       <div className="container mx-auto px-4 pt-4 flex justify-center">
-        <AdSensePlaceholder slot="HOME_TOP_SLOT" className="w-full h-[90px] max-w-4xl" />
+        <div className="w-full h-[90px] max-w-4xl bg-am-green/5 rounded-xl border border-am-green/10 flex items-center justify-center">
+          <p className="text-am-green font-serif italic text-lg text-center px-4">
+            Curadoria especial de produtos para realçar sua beleza natural.
+          </p>
+        </div>
       </div>
 
       {/* Hero Section */}
@@ -123,10 +136,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Mid Section Ad */}
-      <div className="container mx-auto px-4 py-4 flex justify-center">
-        <AdSensePlaceholder slot="HOME_HERO_BOTTOM_SLOT" className="w-full h-[100px] max-w-5xl" />
-      </div>
+
 
       {/* Ofertas Flash Section */}
       <section className="container mx-auto px-4 py-6">
@@ -155,7 +165,7 @@ export default function Home() {
           <div className="h-px bg-gray-300 w-16"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
           {rotatingProducts.map(product => (
             <ProductCard
               key={product.id}
@@ -165,11 +175,10 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Ad between Products and Blog */}
+        {/* Decorative Spacer */}
         <div className="container mx-auto px-4 py-8 flex justify-center border-y border-gray-100 mb-12">
           <div className="text-center">
-            <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-4">Publicidade</p>
-            <AdSensePlaceholder slot="HOME_GRID_FOOTER_SLOT" className="w-full h-[250px] md:h-[90px] max-w-4xl" />
+            <p className="font-serif italic text-am-black/40">Sua beleza é única, celebre-a todos os dias.</p>
           </div>
         </div>
 
@@ -204,11 +213,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bottom Sticky-like Ad */}
-      <div className="bg-white border-t border-gray-100 py-8 mt-16">
-        <div className="container mx-auto px-4 flex flex-col items-center">
-          <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-4">Recomendado para você</p>
-          <AdSensePlaceholder slot="HOME_FOOTER_ADS_SLOT" className="w-full h-[280px] md:h-[150px] max-w-6xl" />
+      {/* Bottom Features Placeholder */}
+      <div className="bg-white border-t border-gray-100 py-12 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <h3 className="font-serif text-2xl font-bold text-am-black mb-4">Atendimento Personalizado</h3>
+          <p className="text-gray-600 max-w-xl mx-auto mb-8">
+            Dúvidas sobre qual produto escolher? Entre em contato e receba uma consultoria exclusiva para seu tipo de pele e estilo.
+          </p>
+          <Link
+            href="/contato"
+            className="inline-block bg-am-green text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-am-black transition-colors"
+          >
+            Falar com a Consultora
+          </Link>
         </div>
       </div>
     </main>

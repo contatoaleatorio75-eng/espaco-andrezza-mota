@@ -1,17 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import AdSensePlaceholder from "./AdSensePlaceholder";
+
 import { SITE_SETTINGS } from "@/data/site-settings";
 
 export default function Header() {
     return (
         <header className="bg-gradient-to-r from-am-gradient-start to-am-gradient-end shadow-sm">
-            {/* Top Bar for Ads - Hidden on mobile, visible on desktop */}
-            <div className="hidden md:block bg-gray-50 border-b border-gray-100 py-2">
-                <div className="container mx-auto px-4 flex justify-center">
-                    <AdSensePlaceholder slot="TOP_HEADER_SLOT" className="w-[728px] h-[90px]" />
-                </div>
-            </div>
+
 
             <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
                 <Link href="/" className="flex items-center gap-3 group">
