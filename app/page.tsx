@@ -160,7 +160,7 @@ export default function Home() {
 
           <div className="flex flex-wrap justify-center gap-4 max-w-7xl mx-auto">
             {prontaEntrega.slice(0, 4).map(product => (
-              <div key={`pe-${product.id}`} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)] xl:w-[calc(25%-1rem)] max-w-sm">
+              <div key={`pe-${product.id}`} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1rem)] xl:w-[calc(25%-1rem)] max-w-sm flex">
                 <ProductCard
                   brandRaw={product.brand}
                   productName={product.name}
