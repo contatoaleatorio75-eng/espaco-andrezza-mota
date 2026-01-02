@@ -145,9 +145,9 @@ export default function Home() {
               href={`https://wa.me/553197111424?text=${encodeURIComponent("Oi Andrezza! Vi sua seção de Pronta Entrega no site e gostaria de saber o que você tem disponível agora.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mx-4 text-xl md:text-2xl font-bold text-emerald-900 uppercase tracking-widest text-center hover:text-green-600 transition-colors"
+              className="mx-4 text-xl md:text-2xl font-bold text-emerald-900 uppercase tracking-widest text-center hover:text-green-600 transition-colors flex items-center gap-2"
             >
-              🌻 *Pronta Entrega em Betim - MG.
+              🌻 *Pronta Entrega em Betim - MG. <span className="pointing-hand">👈</span>
             </a>
             <div className="h-px bg-emerald-300 w-16"></div>
           </div>
