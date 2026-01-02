@@ -2,11 +2,7 @@
 import React from 'react';
 
 const STORE_LINKS: Record<string, string> = {
-    natura: "https://minhaloja.natura.com/consultoria/andrezzamota",
-    boticario: "https://minhaloja.grupoboticario.com.br/espacoandrezzamota",
-    eudora: "https://minhaloja.grupoboticario.com.br/espacoandrezzamota",
-    oui: "https://minhaloja.grupoboticario.com.br/espacoandrezzamota",
-    whatsapp: "https://wa.me/c/553197111424"
+    whatsapp: "https://wa.me/553197111424"
 };
 
 const BRAND_STYLES: Record<string, { border: string, text: string, bg_accent: string, label: string }> = {
@@ -28,7 +24,10 @@ interface ProductCardProps {
 export default function ProductCard({ brandRaw, productName, link }: ProductCardProps) {
     const brandKey = brandRaw?.toLowerCase().trim().replace('ó', 'o').replace('á', 'a') || 'default';
     const style = BRAND_STYLES[brandKey] || BRAND_STYLES.default;
-    const finalLink = link || STORE_LINKS[brandKey] || STORE_LINKS.whatsapp;
+
+    // Automatic logic: If no specific link, create a personalized WhatsApp message
+    const whatsappMessage = encodeURIComponent(`Olá Andrezza! Vi o produto "${productName}" no seu site e gostaria de saber mais/comprar.`);
+    const finalLink = link || `https://wa.me/553197111424?text=${whatsappMessage}`;
 
     return (
         <div className={`my-10 w-full max-w-2xl mx-auto bg-white border-2 ${style.border} rounded-2xl shadow-sm overflow-hidden transition-all hover:shadow-md hover:-translate-y-1`}>
