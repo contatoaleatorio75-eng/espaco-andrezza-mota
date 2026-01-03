@@ -46,6 +46,11 @@ export default function Header() {
                             </Link>
                         </li>
                         <li>
+                            <Link href="/#dicas-de-beleza" className="text-amber-600 hover:text-amber-700 transition-all hover:scale-110 inline-block border-b-2 border-transparent hover:border-amber-600 pb-1 text-center leading-tight">
+                                Dicas de<br className="hidden md:inline" /> Beleza
+                            </Link>
+                        </li>
+                        <li>
                             <Link href="/contato" className="text-rose-600 hover:text-rose-700 transition-all hover:scale-110 inline-block border-b-2 border-transparent hover:border-rose-600 pb-1">
                                 Contato
                             </Link>

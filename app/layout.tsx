@@ -21,7 +21,6 @@ import Header from "@/components/Header";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
 import CookieConsent from "@/components/CookieConsent";
-import Script from "next/script";
 import { SITE_SETTINGS } from "@/data/site-settings";
 
 export default function RootLayout({

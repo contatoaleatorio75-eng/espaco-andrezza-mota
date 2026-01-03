@@ -10,22 +10,6 @@ export default function PrivacyPolicy() {
                     A sua privacidade é importante para nós. É política do <strong>Espaço Andrezza Mota</strong> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <Link href="/" className="text-am-green underline">Espaço Andrezza Mota</Link>, e outros sites que possuímos e operamos.
                 </p>
 
-                <h2 className="text-xl font-bold text-am-black mt-6">Google AdSense e Cookies DoubleClick</h2>
-                <p>
-                    O Google, como fornecedor de terceiros, utiliza cookies para exibir anúncios no nosso site. O uso do cookie DoubleClick pelo Google permite que ele e seus parceiros exibam anúncios para nossos usuários com base em sua visita ao nosso site e/ou a outros sites na Internet.
-                </p>
-                <p>
-                    Os usuários podem optar por sair do uso do cookie DoubleClick para publicidade baseada em interesses visitando as <a href="https://adssettings.google.com/authenticated" target="_blank" rel="nofollow noreferrer" className="text-am-green underline">Configurações de Anúncios do Google</a>.
-                </p>
-
-                <h2 className="text-xl font-bold text-am-black mt-6">Cookies de Publicidade</h2>
-                <p>
-                    Utilizamos publicidade de terceiros no nosso site para suportar os custos de manutenção. Alguns destes publicitários (como o Google AdSense) poderão utilizar tecnologias como os cookies e/ou web beacons quando publicitam no nosso site, o que fará com que esses publicitários (como o Google) também recebam a sua informação pessoal, como o endereço IP, o seu ISP, o seu browser, etc.
-                </p>
-                <p>
-                    Esta função é geralmente utilizada para geotargeting (mostrar publicidade de Belo Horizonte apenas aos leitores oriundos de Belo Horizonte por ex.) ou apresentar publicidade direcionada a um tipo de utilizador (como mostrar publicidade de restaurante a um utilizador que visita sites de culinária regularmente).
-                </p>
-
                 <h2 className="text-xl font-bold text-am-black mt-6">Compromisso do Usuário</h2>
                 <p>
                     O usuário se compromete a fazer uso adequado dos conteúdos e da informação que o Espaço Andrezza Mota oferece no site e com caráter enunciativo, mas não limitativo:

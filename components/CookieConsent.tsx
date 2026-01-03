@@ -23,7 +23,7 @@ export default function CookieConsent() {
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 md:p-6 z-50 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-sm text-gray-600 max-w-4xl">
                 <p>
-                    Nós utilizamos cookies e tecnologias semelhantes para melhorar a sua experiência, personalizar publicidade e recomendar conteúdo de seu interesse. Ao continuar navegando, você concorda com a nossa{" "}
+                    Nós utilizamos cookies e tecnologias semelhantes para melhorar a sua experiência e recomendar conteúdo de seu interesse. Ao continuar navegando, você concorda com a nossa{" "}
                     <a href="/politica-de-privacidade" className="text-am-green underline hover:text-green-700">
                         Política de Privacidade
                     </a>.

@@ -261,7 +261,7 @@ export default function Home() {
         </div>
 
         {/* Dicas de Beleza Section */}
-        <div className="flex items-center justify-center mb-8">
+        <div id="dicas-de-beleza" className="flex items-center justify-center mb-8 scroll-mt-20">
           <div className="h-px bg-gray-300 w-16"></div>
           <h3 className="mx-4 text-xl md:text-2xl font-bold text-am-black uppercase tracking-widest text-center">
             Dicas de Beleza

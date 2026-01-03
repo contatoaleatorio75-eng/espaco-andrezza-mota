@@ -24,9 +24,5 @@ export const SITE_SETTINGS = {
         enabled: true,
         opacity: 0.08,
         size: 250,
-    },
-
-    ads: {
-        enabled: true,
     }
 };
