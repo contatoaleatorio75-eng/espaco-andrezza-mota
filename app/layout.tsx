@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Espaço Andrezza Mota | Consultoria Natura, Avon e Presentes",
-  description: "Sua loja de beleza e presentes em Betim. Encontre as melhores promoções de Natura, Avon, Boticário e utilidades domésticas. Compre online com segurança.",
+  title: "Espaço Andrezza Mota | CONSULTORIA DE BELEZA E BEM ESTAR",
+  description: "Consultoria em Beleza e Bem Estar em Betim. Encontre as melhores promoções de Natura, Avon, Boticário e O.U.i. Atendimento personalizado e pronta entrega.",
 };
 
 import Header from "@/components/Header";
