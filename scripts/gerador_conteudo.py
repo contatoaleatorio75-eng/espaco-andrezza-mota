@@ -30,7 +30,12 @@ TEMAS = [
     "Dicas de presentes sofisticados para datas especiais",
     "Como montar um spa day em casa com produtos Natura Ekos",
     "Cronograma capilar: recuperando o cabelo com Match Boticário",
-    "Maquiagem leve para o dia a dia: tutorial rápido"
+    "Maquiagem leve para o dia a dia: tutorial rápido",
+    "Pronta entrega O Boticário em Betim",
+    "Lançamentos Eudora 2026",
+    "Consultora Natura e Avon próxima a mim",
+    "Onde comprar O.U.I em Betim",
+    "Ofertas Tupperware da semana"
 ]
 
 def gerar_artigo():
@@ -49,6 +54,7 @@ def gerar_artigo():
     REGRAS OBRIGATÓRIAS:
     1. Tom de voz: Acolhedor, especialista, focado em autoestima feminina.
     2. Estrutura: Título chamativo (H1), Introdução empática, Dicas em tópicos, Conclusão inspiradora.
+    3. FOCO LOCAL: Mencione de forma natural que você atende em Betim (MG) e região para atrair clientes locais.
     3. VITRINE DE VENDAS (IMPORTANTE):
        - Você DEVE sugerir produtos específicos das marcas Natura, Boticário, Eudora ou O.U.I.
        - Quando sugerir um produto, use EXATAMENTE este formato de tag para que meu site crie o botão de compra:

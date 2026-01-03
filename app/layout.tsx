@@ -13,8 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Espaço Andrezza Mota | CONSULTORIA DE BELEZA E BEM ESTAR",
-  description: "Consultoria em Beleza e Bem Estar em Betim. Encontre as melhores promoções de Natura, Avon, Boticário e O.U.i. Atendimento personalizado e pronta entrega.",
+  title: 'Espaço Andrezza Mota | Consultoria de Beleza e Bem-Estar',
+  description: 'Consultoria especializada em O Boticário, Eudora, O.U.I e Quem disse, Berenice?. Confira também o melhor de Natura, Avon e Tupperware com Andrezza Mota.',
+  keywords: 'O Boticário, Eudora, O.U.I, Quem disse Berenice, Natura, Avon, Tupperware, Consultoria de Beleza, Betim',
+  openGraph: {
+    title: 'Espaço Andrezza Mota | Consultoria de Beleza',
+    description: 'Sua consultora oficial O Boticário, Eudora, O.U.I, Quem disse Berenice?, Natura, Avon e Tupperware.',
+    url: 'https://www.espacoandrezzamota.com.br/',
+    siteName: 'Espaço Andrezza Mota',
+    locale: 'pt_BR',
+    type: 'website',
+  },
 };
 
 import Header from "@/components/Header";
