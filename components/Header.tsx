@@ -41,8 +41,8 @@ export default function Header() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/sobre" className="text-sky-600 hover:text-sky-700 transition-all hover:scale-110 inline-block border-b-2 border-transparent hover:border-sky-600 pb-1">
-                                Sobre
+                            <Link href="/sobre" className="text-sky-600 hover:text-sky-700 transition-all hover:scale-110 inline-block border-b-2 border-transparent hover:border-sky-600 pb-1 text-center leading-tight">
+                                Sobre<br className="hidden md:inline" /> Andrezza Mota
                             </Link>
                         </li>
                         <li>
