@@ -1,11 +1,11 @@
-// Cache bust: 2026-01-01-v2
+// Cache bust: 2026-01-03-v3
 import ProductCard from "@/components/ProductCard";
+import ProductVitrine from "@/components/ProductVitrine";
 import SeasonalPromo from "@/components/SeasonalPromo";
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import Image from "next/image";
 import { PRODUCTS } from "@/data/products";
+import { getPosts } from "@/lib/posts";
 
 const DECORATIVE_IMAGES = [
   { src: "/mockups/fragrance.png", alt: "Perfume de Luxo" },
@@ -17,47 +17,6 @@ const DECORATIVE_IMAGES = [
 ];
 
 
-interface Post {
-  slug: string;
-  title: string;
-  date: string;
-  description: string;
-}
-
-function getPosts(): Post[] {
-  try {
-    const postsDirectory = path.join(process.cwd(), "content/posts");
-
-    if (!fs.existsSync(postsDirectory)) {
-      return [];
-    }
-
-    const fileNames = fs.readdirSync(postsDirectory);
-    const posts = fileNames
-      .filter((fileName) => fileName.endsWith(".md") && !fileName.includes("sample-post"))
-      .map((fileName) => {
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, "utf8");
-
-        // Simple frontmatter parser
-        const matchTitle = fileContents.match(/title: "(.*?)"/);
-        const matchDate = fileContents.match(/date: "(.*?)"/);
-        const matchDesc = fileContents.match(/description: "(.*?)"/);
-
-        return {
-          slug: fileName.replace(/\.md$/, ""),
-          title: matchTitle ? matchTitle[1] : "Sem título",
-          date: matchDate ? matchDate[1] : "",
-          description: matchDesc ? matchDesc[1] : "",
-        };
-      });
-
-    return posts;
-  } catch (error) {
-    console.error("Error reading posts:", error);
-    return [];
-  }
-}
 
 // Function to get 12 rotating products based on the day
 function getRotatingProducts() {
@@ -232,64 +191,74 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Vitrine Grid */}
-      <section className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-center mb-8">
-          <div className="h-px bg-gray-300 w-16"></div>
+      {/* Interactive Vitrine with Filters */}
+      <ProductVitrine
+        initialProducts={rotatingProducts}
+        allProducts={PRODUCTS}
+      />
+
+      {/* Decorative Spacer */}
+      <div className="container mx-auto px-4 py-8 flex justify-center border-y border-gray-100 mb-12">
+        <div className="text-center">
+          <p className="font-serif italic text-am-black/40">Sua beleza é única, celebre-a todos os dias.</p>
+        </div>
+      </div>
+
+      {/* Depoimentos Section */}
+      <section className="container mx-auto px-4 py-12 bg-white rounded-3xl shadow-sm border border-gray-50 mb-16">
+        <div className="flex items-center justify-center mb-10">
+          <div className="h-px bg-amber-200 w-12"></div>
           <h3 className="mx-4 text-xl md:text-2xl font-bold text-am-black uppercase tracking-widest text-center">
-            Destaques da Semana
+            O que dizem nossas clientes em Betim
           </h3>
-          <div className="h-px bg-gray-300 w-16"></div>
+          <div className="h-px bg-amber-200 w-12"></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto mb-12">
-          {rotatingProducts.map(product => (
-            <ProductCard
-              key={product.id}
-              brandRaw={product.brand}
-              productName={product.name}
-              link={product.link}
-            />
-          ))}
-        </div>
-
-        {/* Decorative Spacer */}
-        <div className="container mx-auto px-4 py-8 flex justify-center border-y border-gray-100 mb-12">
-          <div className="text-center">
-            <p className="font-serif italic text-am-black/40">Sua beleza é única, celebre-a todos os dias.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="p-6 border-l-4 border-amber-400 bg-amber-50/30 italic text-gray-700">
+            <p className="mb-4">"Amei o atendimento da Andrezza! Entrega super rápida em Betim e os mimos que ela manda são de um carinho enorme."</p>
+            <cite className="font-bold text-sm not-italic text-am-black">— Marina Silva, Alterosa</cite>
+          </div>
+          <div className="p-6 border-l-4 border-am-green bg-emerald-50/30 italic text-gray-700">
+            <p className="mb-4">"Os produtos O.U.i são maravilhosos e raros de achar pronta entrega. Recomendo muito o Espaço Andrezza Mota!"</p>
+            <cite className="font-bold text-sm not-italic text-am-black">— Camila Oliveira, Centro</cite>
+          </div>
+          <div className="p-6 border-l-4 border-am-blue bg-sky-50/30 italic text-gray-700">
+            <p className="mb-4">"Consultoria nota 10. Sempre tiro minhas dúvidas antes de comprar meu Boticário e a Andrezza sabe tudo!"</p>
+            <cite className="font-bold text-sm not-italic text-am-black">— Juliana Pereira, PTB</cite>
           </div>
         </div>
-
-        {/* Dicas de Beleza Section */}
-        <div id="dicas-de-beleza" className="flex items-center justify-center mb-8 scroll-mt-20">
-          <div className="h-px bg-gray-300 w-16"></div>
-          <h3 className="mx-4 text-xl md:text-2xl font-bold text-am-black uppercase tracking-widest text-center">
-            Dicas de Beleza
-          </h3>
-          <div className="h-px bg-gray-300 w-16"></div>
-        </div>
-
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {posts.length > 0 ? (
-            posts.map((post) => (
-              <div key={post.slug} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col justify-between">
-                <div>
-                  <h4 className="font-serif text-2xl font-bold text-am-black mb-3">{post.title}</h4>
-                  <p className="text-sm text-gray-500 mb-4">{post.date}</p>
-                  <p className="text-gray-600 mb-6 line-clamp-3">{post.description}</p>
-                </div>
-                <Link href={`/dicas/${post.slug}`} className="text-am-green font-bold text-sm uppercase tracking-widest hover:underline decoration-2 underline-offset-4">
-                  Ler dica completa &rarr;
-                </Link>
-              </div>
-            ))
-          ) : (
-            <p className="text-center text-gray-500 italic col-span-full py-12">
-              Novas dicas estão sendo preparadas com carinho para você...
-            </p>
-          )}
-        </div>
       </section>
+
+      {/* Dicas de Beleza Section */}
+      <div id="dicas-de-beleza" className="flex items-center justify-center mb-8 scroll-mt-20">
+        <div className="h-px bg-gray-300 w-16"></div>
+        <h3 className="mx-4 text-xl md:text-2xl font-bold text-am-black uppercase tracking-widest text-center">
+          Dicas de Beleza
+        </h3>
+        <div className="h-px bg-gray-300 w-16"></div>
+      </div>
+
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        {posts.length > 0 ? (
+          posts.map((post) => (
+            <div key={post.slug} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col justify-between">
+              <div>
+                <h4 className="font-serif text-2xl font-bold text-am-black mb-3">{post.title}</h4>
+                <p className="text-sm text-gray-500 mb-4">{post.date}</p>
+                <p className="text-gray-600 mb-6 line-clamp-3">{post.description}</p>
+              </div>
+              <Link href={`/dicas/${post.slug}`} className="text-am-green font-bold text-sm uppercase tracking-widest hover:underline decoration-2 underline-offset-4">
+                Ler dica completa &rarr;
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-500 italic col-span-full py-12">
+            Novas dicas estão sendo preparadas com carinho para você...
+          </p>
+        )}
+      </div>
 
       {/* Bottom Features Placeholder */}
       <div className="bg-white border-t border-gray-100 py-12 mt-16">
@@ -305,6 +274,25 @@ export default function Home() {
             Falar com a Consultora
           </Link>
         </div>
+      </div>
+
+      {/* Instagram Invitation */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-purple-50 to-pink-50 py-16">
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h3 className="text-2xl md:text-3xl font-serif font-bold text-am-black mb-4">Acompanhe as Novidades</h3>
+          <p className="text-gray-600 mb-8 max-w-lg mx-auto">Siga **@espacoandrezzamota** no Instagram e fique por dentro de todos os lançamentos e promoções relâmpago!</p>
+          <a
+            href="https://www.instagram.com/espacoandrezzamota"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform shadow-lg"
+          >
+            Ver no Instagram 📸
+          </a>
+        </div>
+        {/* Abstract background shapes */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-pink-200/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
       </div>
     </main>
   );
