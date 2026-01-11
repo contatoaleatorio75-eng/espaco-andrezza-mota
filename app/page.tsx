@@ -91,8 +91,8 @@ export default function Home() {
       <section className="bg-white py-16 overflow-hidden">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold animate-shimmer glowing-text mb-6 italic leading-tight">
-              E se sua Beleza estivesse pronta para brilhar?!?
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold animate-shimmer glowing-text mb-6 italic leading-tight">
+              E se sua BELEZA estivesse pronta para BRILHAR?!?
             </h1>
             <div className="h-1 w-24 bg-amber-200 mx-auto rounded-full mb-8"></div>
             <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto font-light tracking-wide">
