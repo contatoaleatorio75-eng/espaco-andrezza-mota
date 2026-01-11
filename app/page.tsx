@@ -87,7 +87,20 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       <SeasonalPromo />
 
-      {/* Ofertas Flash Section */}
+      {/* Hero Content Section */}
+      <section className="bg-white py-16 overflow-hidden">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold animate-shimmer glowing-text mb-6 italic leading-tight">
+              E se sua Beleza estivesse pronta para brilhar?!?
+            </h1>
+            <div className="h-1 w-24 bg-amber-200 mx-auto rounded-full mb-8"></div>
+            <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto font-light tracking-wide">
+              Descubra a consultoria personalizada que realça o que você tem de melhor.
+            </p>
+          </div>
+        </div>
+      </section>
       <section className="container mx-auto px-4 py-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
           {dailyOffers.map(product => (
