@@ -88,7 +88,7 @@ export default function Home() {
       <SeasonalPromo />
 
       {/* Hero Content Section */}
-      <section className="bg-white pt-6 pb-4 overflow-hidden">
+      <section className="bg-white pt-2 pb-4 overflow-hidden">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold animate-shimmer glowing-text mb-2 italic leading-tight">
@@ -122,7 +122,7 @@ export default function Home() {
       </section>
 
       {/* Horizontal Floating Ribbon Showcase */}
-      <div className="relative py-16 overflow-hidden bg-white/40 backdrop-blur-md border-y border-gray-100 mb-8 shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]">
+      <div className="relative py-8 overflow-hidden bg-white/40 backdrop-blur-md border-y border-gray-100 mb-4 shadow-[inset_0_0_20px_rgba(0,0,0,0.02)]">
         <div className="flex animate-marquee gap-12 px-4 py-4">
           {[...Array(30)].map((_, i) => {
             const baseImg = DECORATIVE_IMAGES[i % DECORATIVE_IMAGES.length];
@@ -221,7 +221,7 @@ export default function Home() {
       </div>
 
       {/* Depoimentos Section */}
-      <section className="container mx-auto px-4 py-12 bg-white rounded-3xl shadow-sm border border-gray-50 mb-16">
+      <section className="container mx-auto px-4 py-8 bg-white rounded-3xl shadow-sm border border-gray-50 mb-8">
         <div className="flex items-center justify-center mb-10">
           <div className="h-px bg-amber-200 w-12"></div>
           <h3 className="mx-4 text-xl md:text-2xl font-bold text-am-black uppercase tracking-widest text-center">
@@ -277,7 +277,7 @@ export default function Home() {
       </div>
 
       {/* Bottom Features Placeholder */}
-      <div className="bg-white border-t border-gray-100 py-12 mt-16">
+      <div className="bg-white border-t border-gray-100 py-8 mt-8">
         <div className="container mx-auto px-4 text-center">
           <h3 className="font-serif text-2xl font-bold text-am-black mb-4">Atendimento Personalizado</h3>
           <p className="text-gray-600 max-w-xl mx-auto mb-8">
@@ -293,7 +293,7 @@ export default function Home() {
       </div>
 
       {/* Instagram Invitation */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-purple-50 to-pink-50 py-16">
+      <div className="relative overflow-hidden bg-gradient-to-r from-purple-50 to-pink-50 py-10">
         <div className="container mx-auto px-4 text-center relative z-10">
           <h3 className="text-2xl md:text-3xl font-serif font-bold text-am-black mb-4">Acompanhe as Novidades</h3>
           <p className="text-gray-600 mb-8 max-w-lg mx-auto">Siga **@espacoandrezzamota** no Instagram e fique por dentro de todos os lançamentos e promoções relâmpago!</p>
