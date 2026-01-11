@@ -72,6 +72,7 @@ def gerar_artigo():
     # Tenta gerar com retentativa em caso de erro de cota (429)
     for tentativa in range(3):
         try:
+            print(f"DEBUG: Tentativa {tentativa+1} - Usando modelo: gemini-2.0-flash")
             client = genai.Client(api_key=GENAI_API_KEY)
             response = client.models.generate_content(
                 model='gemini-2.0-flash',
