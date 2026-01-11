@@ -88,7 +88,7 @@ export default function Home() {
       <SeasonalPromo />
 
       {/* Hero Content Section */}
-      <section className="bg-white pt-6 pb-10 overflow-hidden">
+      <section className="bg-white pt-6 pb-4 overflow-hidden">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold animate-shimmer glowing-text mb-2 italic leading-tight">
