@@ -88,14 +88,17 @@ export default function Home() {
       <SeasonalPromo />
 
       {/* Hero Content Section */}
-      <section className="bg-white py-16 overflow-hidden">
+      <section className="bg-white pt-6 pb-10 overflow-hidden">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold animate-shimmer glowing-text mb-6 italic leading-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold animate-shimmer glowing-text mb-2 italic leading-tight">
               E se sua BELEZA estivesse pronta para BRILHAR?!?
             </h1>
-            <div className="h-1 w-24 bg-amber-200 mx-auto rounded-full mb-8"></div>
-            <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto font-light tracking-wide">
+            <p className="text-[10px] md:text-xs text-amber-700/50 font-medium uppercase tracking-widest mb-6">
+              By Andrezza Mota
+            </p>
+            <div className="h-0.5 w-16 bg-amber-100 mx-auto rounded-full mb-6"></div>
+            <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto font-light tracking-wide px-4">
               Descubra a consultoria personalizada que realça o que você tem de melhor.
             </p>
           </div>
